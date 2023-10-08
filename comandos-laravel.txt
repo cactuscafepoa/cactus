@@ -1,0 +1,204 @@
+Projeto novo
+
+laravel new nome_projeto
+
+GIT - pasta já existente
+git init  - iniciar o repositório
+
+
+(	
+	ls -la  ?? - mostra todos os arquivos, inclusive os ocultos
+	git config --global user.name "Fábio Junges Subtil"
+	git config --global user.email "fabiosubtil@gmail.com"
+
+	git config --global color.ui true - para o terminal ficar colorido
+	git config --list - lista todas as configurações
+	(q para sair)
+	--local - projeto específico
+	--global - para todos os projetos
+
+
+	// TRABALHANDO COM WORKING DIRECTORY ETC.
+	working directory: onde edito os arquivos
+	staging area: git identifica mudanças no arquivo e começa a restreá-lo  	- git add
+	git repository: tem a timeline (pontos de história - versões do projeto) 	- 
+	
+
+	git status -> untracked files - arquivos que estão no working directory (mostrados em vermelho)
+	git add nome_arquivo ou . para todos - adiciona para a staging area
+  	git status -> arquivo estará verdinho (estará na stage area e pronto para ser commitado)
+			neste ponto, o arquivo está dentro da pasta .git e estará versionado
+	git commit -m "começando projeto"
+	- o arquivo é adicionado ao branch main
+	git log  
+		id commit xyz_HASH_123 (HEAD -> MASTER) 
+		Author:
+		DAte:
+		NUM CLONE, É NESTE HEAD (COMMIT) que será clonado
+
+	para voltar para o working directory (do vermelho para o verde)
+	git restore --staged nome_arquivo
+
+	git log - vejo todos os commits em hash
+	git chekout hash_commit  (para ver a versão desse commit)
+	git chekout main         (volto para a última modificação do arquivo - vai para o branch main)
+
+	git diff - o que foi modificado no arquivo
+
+
+	NA PRÁTICA - branch develop_teste
+	git checkout -b develop_teste (cria a branch develop_teste)
+	
+	-> trabalho na branch develop_teste e finalizo. Quero que vá para a branch main (Produção).
+	git merge develop_teste
+
+	EXCLUIR O BRANCH -> git branch -D <nome do branch>  (ou -d)
+
+
+	CLONAR UM PROJETO
+	PELA URL 
+	git clone https://gitlab.com/fabiosubtil/nome_do_projeto.git
+
+	(main -> origin) = origin significa que o arquivo vem de um lugar remoto (foi clonado)
+
+
+	git push => envia os arquivos para o GitLab - para a main
+	
+	MENSAGEM DE ERRO: git push
+		fatal: The current branch develop has no upstream branch.
+		significa: tem que configurar esse novo branch para upstream
+
+		git push --set-upstream origin develop
+	
+
+	https://www.youtube.com/watch?v=veJtcQlBxKQ&t=873s 33:00 minutos
+
+	Novo programador vai começar o trabalho.
+	faz o clone - por padrão o clone vem da main
+	e o branch develop? ele precisa "trazer" o branch developer para dar continuidade ao programa
+
+	FAZ ASSIM:
+	cria o branch local: git checkout -b develop
+	git pull origin develop  
+
+	COMO É COMPLICADO ESSE TIPO DE CONTROLE, FOI CRIADO O GITFLOW (ver abaixo).
+
+)
+git remote add origin https://gitlab.com/fabiosubtil/cactus.git - adiciona a origem do repositório
+git add .  - adiciona todos os arquivos do projeto
+git commit -m "Commit inicial"  - primeiro commit
+git push -u origin main  - passa qual a origem e branch que vou trabalhar
+
+
+
+=> vai subir para o gitlab o projeto com "Commit inicial"
+=============== GIT FLOW ==================================================
+USANDO o GITFLOW - git flow init - instala o git flow    https://www.youtube.com/watch?v=veJtcQlBxKQ&t=873s 42:00 minutos
+-> é utilizado para organizar as branches
+
+No diretório local com o repositório
+git flow init 
+
+======= CRIAR NOVA FEATURE =======
+git flow feature start nova-api-pagamento
+
+IMPLEMENTOU A PROGRAÇÃO
+git add .
+git commit -m "terminada nova feature api-pagamento"
+
+FECHO A FEATURE
+git flow feature finish nova-api-pagamento
+
+ABRO A RELEASE
+git flow release start 1.0.0
+
+O CÓDIGO É REVISADO E TAL
+git flow release finish 1.0.0
+
+Abre o arquivo para mensagem: o que foi programado na release
+SUBIR A RELEASE PARA A MAIN
+git checkout main
+git push
+
+
+=== adicional
+1 - o "git outgoing" que lista pra mim todo os commits da minha branch que ainda não estão no repositório de origem (origin)
+2 -  o "git incoming" que lista pra mim os commits do repositório de origem (origin) que ainda não estão na minha branch local. 
+.
+Ajuda, principalmente quando a gente trabalha em um projeto com vários outros devs. Vou deixar o código deles aqui, caso alguém ache interessante.
+git config --global alias.outgoing 'log --pretty=oneline --abbrev-commit --graph @{u}..' 
+git config --global alias.incoming '!git fetch && git log --pretty=oneline --abbrev-commit --graph ..@{u}'
+
+===
+
+
+CRIAR NOVO HOTFIX  53:50
+
+
+
+
+
+PRIMEIRA FEATURE
+git flow feature start rotas-controllers-views-site-inicio
+git branch  - vai apontar para a feature recém criada
+
+
+
+
+
+
+
+
+
+
+
+
+
+Feature 2
+git flow feature start assets-frontend-estatico
+
+
+
+
+
+
+para enviar o e-mail?
+php artisan queue:work --tries=3
+
+
+USANDO O TINKER
+
+php artisan tinker
+
+//$categoria = Categoria::create(['nome' => 'Fone de ouvido', 'slug' => 'Fone de ouvido', 'imagem' => 'imagem', 'descricao' => 'descricao da categoria']);
+// REFATORADO
+$categoria = Categoria::create(['nome' => 'Carros de corrida', 'imagem' => 'images/cactus.png', 'descricao' => 'descricao da categoria']);
+
+
+
+MELHORIAS 29:10 SLUG
+OK - FINALIZADO
+
+
+cms-home.php  - VER A INTERFACE DISSO
+
+
+
+ERROS DIFÍCEIS
+validator no update de produto
+You should make sure you display the form in the route using GET method. 
+When you use validation, if validation fails, Laravel makes redirection (using GET method) to the route where form was displayed. 
+So in such case when you have multiple steps form, you should put data into session and handle also GET method for steps 
+where you use validation.
+
+
+
+ALTER TABLE produtos ADD CONSTRAINT fk_foreign_key_name FOREIGN KEY (`categoria_id`) REFERENCES categorias('id')
+
+
+ALTER TABLE table_name
+    ADD CONSTRAINT fk_foreign_key_name
+    FOREIGN KEY (foreign_key_name)
+    REFERENCES target_table(target_key_name);
+
+
