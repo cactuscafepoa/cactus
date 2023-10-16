@@ -24,7 +24,7 @@
 
     <!-- Products list -->
     <div class="gray-background">
-        <section class="products__cultivation__category main-wrapper">
+        <section class="products__cultivation__category main-wrapper" style="padding:10px 0px 10px 0px;">
             @foreach($categorias as $category)
                 <article class="card__product">
                     <a href="{{route('site.produtos.categoria',$category->slug)}}" style="text-decoration:none;">

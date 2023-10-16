@@ -11,8 +11,8 @@
 
     <div class="gray-background">
         <section class="main-wrapper" style="padding: 10px 0 20px 0;">
-            <h1 class="display-medium">Envie-nos uma mensagem </h1>
-            <p>Suas dúvidas, críticas ou sugestões são importantes para nós.</p>
+            <h1 class="display-medium">Para falar conosco ou nos conhecer</h1>
+            <p>Suas sugestões são importantes para o nosso crescimento.</p>
             <section class="contact__options"  style="grid-template-columns: initial;max-width: 1040px;">
                 <div class="contact__infos" style="text-align:center;">
                     <div>
@@ -47,11 +47,11 @@
                     <div>
                         <div class="contact__infos__header" style="display: initial;">
                             <img src="{{asset('images/instagram.png')}}" alt="">
-                            <h3 class="title-small" style="display:initial;margin-bottom:10px;display:block;margin-top:10px;">Instagram</h3>
+                            <h3 class="title-small" style="display:initial;margin-bottom:10px;">Instagram</h3>
                         </div>
                         <section class="contact__infos__social-media">
-                            <a href="https://www.instagram.com/cactuscafepoa/" target="_blank">Cactus Cafe Poa</a>
-                            <a href="https://www.instagram.com/lifazendoarte/" target="_blank">Li Fazendo Arte</a><br>
+                            <a href="https://www.instagram.com/cactuscafepoa/" target="_blank" style="color:#FFFFFF;display:block;margin-top:10px;">Cactus Cafe Poa</a>
+                            <a href="https://www.instagram.com/lifazendoarte/" target="_blank" style="color:#FFFFFF;display:block;margin-top:10px;">Li Fazendo Arte</a>
                         </section>
                     </div>
                 </div>

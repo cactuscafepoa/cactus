@@ -13,6 +13,11 @@
 
 @else
 
+<style>
+    body {
+        background-color: #f5f7f9;
+    }
+</style>
     <header class="common-header">
         <div class="header-wrapper">
             <h1 class="title-large">Cardápio: {{$categoria[0]->CatNome}}</h1>
@@ -20,7 +25,7 @@
         <div class="pattern__header"></div>
     </header>
 
-    <div class="products__general main-wrapper"  style="margin-top: initial;">
+    <div class="products__general main-wrapper"  style="margin-top:-50px;margin-bottom: -30px;">
 
         <aside class="product__selected" style="margin-bottom: 10px;">
             <article class="card__product" style="margin-top: 101px;">
@@ -35,14 +40,14 @@
                 </a>
 
             </article>
-            <section class="products__cultivation__category main-wrapper" style="padding:20px 0px 10px 0px;display: flex;">
+            <section class="products__cultivation__category main-wrapper" style="padding:20px 0px 10px 0px;display: flex;margin-bottom:20px;">
                 <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Voltar</a>
             </section>
         </aside>
 
         <section class="products__list">
             <header>
-                <h2 class="title-large">{{ $categoria[0]->CatNome }}</h2>
+                <!--<h2 class="title-large">{{ $categoria[0]->CatNome }}</h2>-->
             </header>
 
             @foreach($categoria as $product)
@@ -93,6 +98,16 @@
                         </div>
                     </section>
                 </article>
+
+                @php
+                    if ($loop->index >= 4 && $loop->last) { @endphp
+                        <section class="products__cultivation__category main-wrapper" style="padding:0px;display: flex;">
+                            <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Voltar</a>
+                        </section>
+                    @php }
+                @endphp
+
+
             @endforeach
         </section>
     </div>

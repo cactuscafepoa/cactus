@@ -20,7 +20,7 @@ Alterar Configuração
 	<div class="form-group mt-2">
 
         <!-- CONFIGURAÇÃO DOS TEXTOS DA PÁGINA INICIAL -->
-        <div style="display:flex;align-items:center;width:100%;margin-top:10px;">
+        <div style="display:flex;align-items:center;width:100%;margin-top:10px;margin-bottom:10px;">
             <label class="switch">
                 @php
                     $checked = "";
@@ -31,19 +31,27 @@ Alterar Configuração
             </label>
             <label for="pagina_inicial" class="ml-4">Mostrar título e/ou texto na PÁGINA INICIAL?</label>
         </div>
-        <label for="pagina_inicial_titulo">Título a ser mostrado</label>
-        <input type="text" class="form-control" name="pagina_inicial_titulo" id="pagina_inicial_titulo" value="{{$configuracao[0]->pagina_inicial_titulo}}">
-        <label for="pagina_inicial_texto">Texto a ser mostrado</label>
-        <input type="text" class="form-control" name="pagina_inicial_texto" id="pagina_inicial_texto" value="{{$configuracao[0]->pagina_inicial_texto}}">
+        <label for="pagina_inicial_titulo" style='margin-bottom:6px;'>Título a ser mostrado</label>
+        <input style="margin-bottom:10px;" type="text" class="form-control" name="pagina_inicial_titulo" id="pagina_inicial_titulo" value="{{$configuracao[0]->pagina_inicial_titulo}}">
+        <label for="pagina_inicial_texto" style='margin-bottom:6px;'>Texto a ser mostrado</label>
+        <input style="margin-bottom:10px;" type="text" class="form-control" name="pagina_inicial_texto" id="pagina_inicial_texto" value="{{$configuracao[0]->pagina_inicial_texto}}">
 
-        <label for="botao_inicial">Qual botão será mostrado no card da página inicial?</label>
-
-        <select class="form-select form-select-sm" style="width:20%;" name="botao_inicial" id="botao_inicial">
+        <label for="botao_inicial" style='margin-bottom:6px;'>Qual botão será mostrado no card da página inicial?</label>
+        <select class="form-select form-select-sm" style="width:20%;margin-bottom:10px;" name="botao_inicial" id="botao_inicial">
             <option value="cardapio" {{($configuracao[0]->botao_inicial == "cardapio") ? 'selected' : ''}}>Cardápio</option>
             <option value="pratos" {{($configuracao[0]->botao_inicial == "pratos") ? 'selected' : ''}}>Pratos do dia</option>
             <option value="encomendas" {{($configuracao[0]->botao_inicial == "encomendas") ? 'selected' : ''}}>Encomendas</option>
             <option value="novidades" {{($configuracao[0]->botao_inicial == "novidades") ? 'selected' : ''}}>Novidades</option>
         </select>
+
+        <label for="imagem">Imagem da capa do site (jpg, jpeg, png, bmp, gif ou webp - a imagem original possui 1024 x 768 pixels)</label>
+        <div style='display:flex;align-items:center;justify-content:space-between;'>
+            <div style='display:flex;align-items:center;width:75%;'>
+                <img src="{{asset('images/banner_capa')}}" alt="" class="img-thumbnail" height="100px" width="100px">
+                <input type="file" class="form-control ml-5" name="imagem" id="imagem" value="">
+            </div>
+        </div>
+
 
         <hr style="border:3px solid ;border-radius: 5px;">
 
@@ -124,7 +132,7 @@ Alterar Configuração
 
         <hr style="border:3px solid ;border-radius: 5px;">
 
-        <label for="botao_inicial">Qual Evento será mostrado no site?</label>
+        <label for="botao_inicial">Qual publicação de Evento será mostrada no site?</label>
         <select class="form-select form-select-sm" style="width:5%;" name="evento_id" id="evento_id">
             @foreach ($eventos as $evento)
                 <option value="{{$evento->id}}" {{($configuracao[0]->evento_id == $evento->id) ? 'selected' : ''}}>{{$evento->id}}</option>

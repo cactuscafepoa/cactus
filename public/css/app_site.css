@@ -942,7 +942,7 @@ nav .navigation__itens__cms a:hover img {
 }
 
 .hero {
-    background-image: url(../images/capa_1_imagem_principal.jpg);
+    background-image: url(../images/banner_capa);
     background-repeat: no-repeat;
     /*background-position: center center;*/
     background-position: initial;

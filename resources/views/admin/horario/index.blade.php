@@ -22,7 +22,7 @@ Configuração de Horário
 
 <ul class="list-group">
 	<li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white" style="height:48px;">
-		<span class="d-flex" style='width:15%;'>
+		<span class="d-flex" style='width:17%;'>
 			Dia semana
 		</span>
 		<span class="d-flex" style='width:15%;'>
@@ -34,14 +34,14 @@ Configuração de Horário
 		<span class="d-flex" style='width:15%;'>
 			Fecha
 		</span>
-		<span class="d-flex" style='width:8%;'>
+		<span class="d-flex" style='width:6%;'>
 			Ações
 		</span>
 	</li>
 	{{--dd($dataset)--}}
 	@foreach ($dataset as $horario)
 	<li class="list-group-item d-flex justify-content-between align-items-center">
-		<span class="d-flex" style='width:15%;'>
+		<span class="d-flex" style='width:17%;'>
 			{{ $horario->dia_semana}}
 		</span>
 		<span class="d-flex" style='width:15%;'>
@@ -53,13 +53,13 @@ Configuração de Horário
 		<span class="d-flex" style='width:15%;'>
 			{{ $horario->hora_fecha}}
 		</span>
-		<span class="d-flex" style='width:8%;'>
-			<form name='editar' method="get" action="{{route('form_edit_horario_old', ['id' => $horario->id])}}">
+		<span class="d-flex" style='width:6%;'>
+			<form name='editar' method="get" action="{{route('form_edit_horario_old', ['id' => $horario->id])}}" style="height:8px;">
 					<button class="btn btn-primary btn-sm mr-2">
 						<i class="fas fa-edit"></i>
 					</button>
 			</form>
-			<form name='excluir' method="post" action="/horarios/remover/{{$horario->id}}" onsubmit="return confirm('Confirma remoção do horario: {{addslashes($horario->dia_semana)}}?');">
+			<form name='excluir' method="post" action="/horarios/remover/{{$horario->id}}" onsubmit="return confirm('Confirma remoção do horario: {{addslashes($horario->dia_semana)}}?');" style="height:8px;">
 				@csrf
 				<button class="btn btn-danger btn-sm mr-2">
 					<i class="fas fa-trash-alt"></i>

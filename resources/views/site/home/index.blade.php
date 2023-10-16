@@ -33,8 +33,8 @@
 
         <section class="cultivation__category">
             <picture>
-                <source media="(max-width: 768px)" srcset="./images/so_cactus_verde.png">
-                <img src="{{asset('images/so_cactus_verde.png')}}" alt="Capios accelerare, tanquam superbus stella. cur rector volare?" width="297" height="447">
+                <source media="(max-width: 768px)" srcset="./images/fundo_transparente_botoes_capa.png">
+                <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="Capios accelerare, tanquam superbus stella. cur rector volare?" width="297" height="447">
             </picture>
             <div class="infos__category">
                 <h2 class="title-large"><strong>Cardápio</strong></h2>
@@ -53,8 +53,8 @@
         @endphp
         <section class="cultivation__category">
             <picture>
-                <source media="(max-width: 768px)" srcset="{{asset('images/so_cactus_verde.png')}}">
-                <img src="{{asset('images/so_cactus_verde.png')}}" alt="" width="297" height="447">
+                <source media="(max-width: 768px)" srcset="{{asset('images/fundo_transparente_botoes_capa.png')}}">
+                <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
             </picture>
             <div class="infos__category" style="left: 20px;">
                 <h2 class="title-large"><strong>{{ $tituloDelicia }}</strong></h2>
@@ -70,8 +70,8 @@
     if ($configuracao[0]->novidades) { @endphp
         <section class="cultivation__category">
             <picture>
-                <source media="(max-width: 768px)" srcset="{{asset('images/so_cactus_verde.png')}}">
-                <img src="{{asset('images/so_cactus_verde.png')}}" alt="" width="297" height="447">
+                <source media="(max-width: 768px)" srcset="{{asset('images/fundo_transparente_botoes_capa.png')}}">
+                <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
             </picture>
             <div class="infos__category" style="left: 20px;">
                 <h2 class="title-large"><strong>Novidades</strong></h2>
@@ -87,8 +87,8 @@
     if ($configuracao[0]->encomendas) { @endphp
         <section class="cultivation__category">
             <picture>
-                <source media="(max-width: 768px)" srcset="{{asset('images/so_cactus_verde.png')}}">
-                <img src="{{asset('images/so_cactus_verde.png')}}" alt="" width="297" height="447">
+                <source media="(max-width: 768px)" srcset="{{asset('images/fundo_transparente_botoes_capa.png')}}">
+                <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
             </picture>
             <div class="infos__category" style="left: 20px;">
                 <h2 class="title-large"><strong>Encomendas</strong></h2>
@@ -107,7 +107,7 @@
     <div class="main-wrapper">
         <div class="blog__container">
             <div class="blog__introduction" style="height: initial;margin-top: 15px;background-image: url(../images/depoimentos/guardanapo.png);background-size: 100% 100%;padding: 5px;">
-                <h2 class="title-large" style="color: #8a99a8;font-family: auto;font-size: 1.5rem;font-weight: bold;">Gratidão à <strong>"Family"</strong>, fonte de inspiração e coragem.</h2>
+                <h2 class="title-large" style="color: #8a99a8;font-family: auto;font-size: 1.5rem;font-weight: bold;">Minha gratidão à <strong>"Family"</strong>, fonte de inspiração e coragem.</h2>
                 <p style="padding:5px 0px 0px 0px;color: #8a99a8;font-family: auto;font-size: 1.3rem;">Aos amigos, pelo incentivo e apoio nessa nova jornada que inicio.</p>
             </div>
 

@@ -141,6 +141,14 @@ class ConfiguracaoController extends Controller
       else
         $input['horario'] = 0;
 
+
+        if ($request->file('imagem')) {
+          $path = public_path().'/images/'; //dd($path);
+          $file = $request->file('imagem'); //dd($path);
+          $filename = "banner_capa";    //dd($filename);
+          $file->move($path, $filename);
+        }
+
       $dataset = DB::table('configuracaos')
       ->where('id', $request->id)
       ->update([
