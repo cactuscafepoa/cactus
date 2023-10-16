@@ -167,8 +167,8 @@
         <a href="{{route('dashboard')}}" target="_blank"><img src="{{URL::asset('images/Lock-icon.svg')}}"></a>
         <p>Rua Felipe Neri, 461 Loja 101 - Bairro Auxiliadora, Porto Alegre - RS, 90.440-150.</p>
         <div>
-            <a href="http://mmpx.com.br/" target="_blank">Deisgn by <strong>MMPX</strong></a>
-            <p style='font-size: 1rem;'>Developer: Fábio Junges Subtil</p>
+            <!--<a href="http://mmpx.com.br/" target="_blank">Deisgn by <strong>MMPX</strong></a>-->
+            <p style='font-size: 1rem;'>Developer: Fábio Junges Subtil &copy;2023</p>
         </div>
     </div>
 </section>
