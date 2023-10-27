@@ -22,7 +22,7 @@ class CreateProdutosTable extends Migration
 			$table->decimal('preco',9,2)->nullable();
 			$table->decimal('preco_venda',9,2)->nullable();
 			$table->integer('quantidade')->nullable();
-			$table->integer('fornecedor_id')->nullable();
+			$table->integer('fornecedor_id')->unsigned();
 			$table->foreign('fornecedor_id')->references('id')->on('fornecedores')->restrictOnDelete();
 			$table->string('imagem')->nullable()->default(env('IMAGEM_DEFAULT'));
 			$table->text('link')->nullable();
