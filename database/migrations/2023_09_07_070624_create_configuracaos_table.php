@@ -14,7 +14,7 @@ class CreateConfiguracaosTable extends Migration
     public function up()
     {
         Schema::create('configuracaos', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->boolean('pagina_inicial')->default(false);
             $table->string('pagina_inicial_titulo')->nullable();
             $table->text('pagina_inicial_texto')->nullable();

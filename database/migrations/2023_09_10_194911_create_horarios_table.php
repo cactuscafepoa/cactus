@@ -14,7 +14,7 @@ class CreateHorariosTable extends Migration
     public function up()
     {
         Schema::create('horarios', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('dia_mes')->nullable();
             $table->boolean('dia_mes_mostrar')->default(false);
             $table->string('dia_semana')->nullable();

@@ -14,14 +14,14 @@ class CreateCategoriasTable extends Migration
     public function up()
     {
         Schema::create('categorias', function (Blueprint $table) {
-            $table->id();
+            $table->increments('id');
             $table->string('nome');
             $table->string('slug')->nullable()->unique();
             $table->text('descricao')->nullable();
             $table->string('imagem')->nullable()->default(env('IMAGEM_DEFAULT'));
             $table->boolean('visivel')->default(false);
             $table->timestamps();
-            //$table->softDeletes();            
+            //$table->softDeletes();
         });
     }
 
