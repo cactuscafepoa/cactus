@@ -29,25 +29,25 @@ Configurações
 		</span>-->
 		<span style="width:18%;display: inline-block;">
 			Página Inicial
-		</span>				
+		</span>
 		<span style="width:14%;display: inline-block;">
 			Cardápio
-		</span>				
+		</span>
 		<span style="width:18%;display: inline-block;">
 			Prato do Dia
-		</span>		
+		</span>
 		<span style="width:14%;display: inline-block;">
 			Encomendas
-		</span>		
+		</span>
 		<span style="width:14%;display: inline-block;">
 			Novidades
-		</span>		
+		</span>
 		<span style="width:14%;display: inline-block;">
 			Horário
-		</span>								
+		</span>
 		<span style="width:6%;display: inline-block;float:right;">
 			Ações
-		</span>		
+		</span>
 	</li>
 	@foreach ($dataset as $configuracao)
 		<li class="list-group-item">
@@ -57,27 +57,27 @@ Configurações
 			@php $conf = "Não"; if ($configuracao->pagina_inicial == 1) $conf = "Sim"; @endphp
 			<span style="width:18%;display: inline-block;">
 				{{ $conf}}
-			</span>	
+			</span>
 			@php $conf = "Não"; if ($configuracao->cardapio == 1) $conf = "Sim"; @endphp
 			<span style="width:14%;display: inline-block;">
 				{{ $conf}}
-			</span>	
+			</span>
 			@php $conf = "Não"; if ($configuracao->prato_dia == 1) $conf = "Sim"; @endphp
 			<span style="width:18%;display: inline-block;">
 				{{ $conf}}
-			</span>	
-			@php $conf = "Não"; if ($configuracao->encomendas == 1) $conf = "Sim"; @endphp		
+			</span>
+			@php $conf = "Não"; if ($configuracao->encomendas == 1) $conf = "Sim"; @endphp
 			<span style="width:14%;display: inline-block;">
-				{{ $conf}}				
+				{{ $conf}}
 			</span>
 			@php $conf = "Não"; if ($configuracao->novidades == 1) $conf = "Sim"; @endphp
 			<span style="width:14%;display: inline-block;">
-				{{ $conf}}				
-			</span>		
-			@php $conf = "Não"; if ($configuracao->horario == 1) $conf = "Sim"; @endphp		
+				{{ $conf}}
+			</span>
+			@php $conf = "Não"; if ($configuracao->horario == 1) $conf = "Sim"; @endphp
 			<span style="width:14%;display: inline-block;">
-				{{ $conf}}				
-			</span>		
+				{{ $conf}}
+			</span>
 			<span style="width:6%;display: inline-block;float:right;">
 				<form name='editar' method="get" action="{{route('form_edit_configuracao_old', ['id' => $configuracao->id])}}">
 					<!-- tirei o csrf por causa do método get -->
@@ -89,4 +89,9 @@ Configurações
 		</li>
 	@endforeach
 </ul>
+
+<div class="d-flex justify-content-between" style="margin-top:60px;">
+	<a href="{{route('phpinfo')}}" >PhpInfo</a>
+</div>
+
 @endsection

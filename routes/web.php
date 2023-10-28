@@ -147,6 +147,12 @@ Route::post('configuracaos/atualizar'      , [ConfiguracaoController::class, 'up
 
 });
 
+// PÁGINAS DE CONFIGURAÇÃO
+Route::get('/phpinfo', function () {
+    return view('admin.configuracao.phpinfo');
+})->middleware(['auth'])->name('phpinfo');
+
+
 /*
 Route::delete('/series/{id}', 'SeriesController@destroy')
     ->middleware('autenticador');
