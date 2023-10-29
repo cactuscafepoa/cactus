@@ -24,5 +24,6 @@ class Configuracao extends Model
         'novidades',
         'horario',
         'evento_id',
+        'cardapio_fisico_qtd'
     ];
 }

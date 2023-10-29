@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Configuracao;
 use App\Models\Evento;
-//use App\Http\Requests\ConfiguracaoFormRequest;
+use App\Http\Requests\ConfiguracaoFormRequest;
 use Illuminate\Support\Facades\DB;
 
 class ConfiguracaoController extends Controller
@@ -106,7 +106,7 @@ class ConfiguracaoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(ConfiguracaoFormRequest $request, Configuracao $configuracao)
     {
 
       $input = $request->all();
@@ -170,6 +170,7 @@ class ConfiguracaoController extends Controller
         'novidades'		            => $input['novidades'],
         'horario'		              => $input['horario'],
         'evento_id'		            => $input['evento_id'],
+        'cardapio_fisico_qtd'     => $input['cardapio_fisico_qtd'],
       ]);
       $request->session()->flash("mensagem","Configuração atualizada com sucesso.");
       return redirect()->route('listar_configuracaos');

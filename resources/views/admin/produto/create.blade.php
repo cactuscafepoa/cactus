@@ -80,7 +80,7 @@ Adicionar Produto
 
         <div class="d-flex justify-content-between align-items-center">
             <span style="width:100%;">
-                <label for="fornecedor_id">Fornecedor</label>
+                <label for="fornecedor_id">Fornecedor*</label>
                 <select class="form-control" name="fornecedor_id" id="fornecedor_id">
                     <option value="">Selecione Fornecedor</option>
                     @foreach ($fornecedores as $value)

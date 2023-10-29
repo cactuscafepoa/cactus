@@ -38,6 +38,7 @@ class ProdutoFormRequest extends FormRequest
 		    {
                 return [
                     'categoria_id' => 'integer',
+                    'fornecedor_id'	=> 'bail|required',
                     'nome'         => 'bail|required|min:3|max:190|unique:produtos,nome,NULL,id,categoria_id,'.$request->categoria_id,
                     'descricao'    => 'bail|max:500',
                     'imagem'       => 'bail|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:2048',
@@ -46,6 +47,7 @@ class ProdutoFormRequest extends FormRequest
             else {
                 return [
                     'categoria_id' => 'integer',
+                    'fornecedor_id'	=> 'bail|required',
                     'nome'         => 'bail|required|min:3|max:190',
                     'descricao'    => 'bail|max:500',
                     'imagem'       => 'bail|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:2048',
@@ -55,6 +57,7 @@ class ProdutoFormRequest extends FormRequest
         else { /* inclusão */
             return [
                 'categoria_id' => 'integer',
+                'fornecedor_id'	=> 'bail|required',
                 'nome'         => 'bail|required|min:3|max:190|unique:produtos,nome,NULL,id,categoria_id,'.$request->categoria_id,
                 'descricao'    => 'bail|max:500',
                 'imagem'       => 'bail|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:2048',
@@ -66,6 +69,7 @@ class ProdutoFormRequest extends FormRequest
     {
         return [
             'categoria_id.integer'     => 'Categoria é obrigatória.',
+            'fornecedor_id.required'   => 'Fornecedor é obrigatório.',
             'nome.required'            => 'Nome é obrigatório.',
             'nome.unique'              => 'Produto já cadastrado com este nome para esta categoria.',
             /*'descricao.required'       => 'Descrição é obrigatória.',*/

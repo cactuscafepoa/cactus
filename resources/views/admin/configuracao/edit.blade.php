@@ -132,12 +132,20 @@ Alterar Configuração
 
         <hr style="border:3px solid ;border-radius: 5px;">
 
-        <label for="botao_inicial">Qual publicação de Evento será mostrada no site?</label>
-        <select class="form-select form-select-sm" style="width:5%;" name="evento_id" id="evento_id">
-            @foreach ($eventos as $evento)
-                <option value="{{$evento->id}}" {{($configuracao[0]->evento_id == $evento->id) ? 'selected' : ''}}>{{$evento->id}}</option>
-            @endforeach
-        </select>
+        <div class="d-flex justify-content-between">
+            <div>
+            <label for="botao_inicial">Qual publicação de Evento será mostrada no site?</label>
+            <select class="form-select form-select-sm" style="width:20%;" name="evento_id" id="evento_id">
+                @foreach ($eventos as $evento)
+                    <option value="{{$evento->id}}" {{($configuracao[0]->evento_id == $evento->id) ? 'selected' : ''}}>{{$evento->id}}</option>
+                @endforeach
+            </select>
+            </div>
+            <div>
+            <label for="botao_inicial">Cardápio físico: quantidade de produtos por coluna (valor entre 20 e 100)*</label>
+            <input style="width:20%;"  maxlength="3" type="text" class="form-control" name="cardapio_fisico_qtd" id="cardapio_fisico_qtd" value="{{$configuracao[0]->cardapio_fisico_qtd}}">
+            </div>
+        </div>
 
         <hr>
 

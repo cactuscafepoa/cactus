@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Produto;
 use App\Models\Categoria;
 use App\Models\Fornecedor;
+use App\Models\Configuracao;
 use App\Http\Requests\ProdutoFormRequest;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
@@ -296,6 +297,10 @@ class ProdutoController extends Controller {
 	public function createPDF(Request $request) {
 
 		//dd($request); 		dd($request->produtos);
+
+		$configuracao = Configuracao::query()->get(); //dd($configuracao[0]->cardapio_fisico_qtd);
+
+
 		if (is_null($request->produtos)) { // usuário não escolheu nenhum produto
 			$request->session()->flash('mensagem',"Ao menos um produto deve estar assinalado para gerar-se cardápio físico.");
 			return redirect()->route('listar_produtos');
@@ -312,7 +317,7 @@ class ProdutoController extends Controller {
         ->orderBy('produtos.nome', 'asc')
         ->get();  //ddd($dataset);
 
-		$dataset = $dataset->chunk(50);  //dd($dataset);  dd(count($dataset));
+		$dataset = $dataset->chunk($configuracao[0]->cardapio_fisico_qtd);  //dd($dataset);  dd(count($dataset));
 
 		$pdf = PDF::loadView('admin.produto.pdf_view',
 			['dataset' => $dataset,
