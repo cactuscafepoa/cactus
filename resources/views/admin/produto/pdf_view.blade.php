@@ -43,7 +43,7 @@
 @for ($i = 0; $i < $qtdArrays; $i++)
 	@php
 		$nomeCat = "";
-		if ($i == 0 || $i == 2 || $i == 4 || $i == 6) {
+		if ($i == 0 || $i == 2 || $i == 4 || $i == 6 || $i == 8) {
 			// INSERE CABEÇALHO
 			if ($i == 0) echo $cabecalho; else echo $cabecalhoPBreak;
 			$posicaoDiv = "leftbox";
@@ -86,7 +86,7 @@
 		   ( $qtdArrays == 6 && ($i+1 == 2 || $i+1 == 4 || $i+1 == 6) ) ||
 		   ( $qtdArrays == 7 && ($i+1 == 2 || $i+1 == 4 || $i+1 == 6 || $i+1 == 7) ) ||
 		   ( $qtdArrays == 8 && ($i+1 == 2 || $i+1 == 4 || $i+1 == 6 || $i+1 == 8) ) ||
-		   ( $qtdArrays == 9 && ($i+1 == 2 || $i+1 == 4 || $i+1 == 6 || $i+1 == 8 || $i+1 == 8) )
+		   ( $qtdArrays == 9 && ($i+1 == 2 || $i+1 == 4 || $i+1 == 6 || $i+1 == 8 || $i+1 == 9) )
 		) {
 		echo "</div>";  // FECHA MOLDURA
 		echo $rodape;
