@@ -104,6 +104,7 @@ class CategoriaController extends Controller
                    'produtos.encomenda_quantidade_minima AS ProdEncQtdMin',
                    'produtos.encomenda_prazo_minimo AS ProdEncPrazoMin',
                    'produtos.encomenda AS ProdEncomenda', DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
+                   'produtos.link AS ProdLink',
                    'produtos.destaque AS ProdDestaque',)
         /*->where('categorias.visivel', '=', '1')*/
         /*->where('produtos.visivel', '=',  '1')*/

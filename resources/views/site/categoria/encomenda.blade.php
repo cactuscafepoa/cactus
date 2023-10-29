@@ -58,10 +58,28 @@
                     <!-- PRODUTOS -->
                     @foreach($categoria as $product)
 
+                    @php
+                    $link = "javascript:;";
+                    $linkImag = "";
+                    $alvo = "";
+
+                    if ($product->ProdLink != "") {
+                        if (strpos($product->ProdLink, "instagram") > 0)
+                            $linkImag = "<img class='novidade__label' src='/images/instagram.png' alt='Instagram' style='width:6%;position:absolute;top:14px;left:130px;margin-left: 10px'>";
+                        elseif (strpos($product->ProdLink, "youtube") > 0)
+                            $linkImag = "<img class='novidade__label' src='/images/youtube.png' alt='YouTube' style='width:7%;position:absolute;top:10px;left:130px;margin-left: 10px'>";
+                        else
+                            $linkImag = "<img class='novidade__label' src='/images/midia_social_vazia.png' style='width:7%;position:absolute;top:10px;left:130px;margin-left: 10px'>";
+
+                        $link = $product->ProdLink;
+                        $alvo = "target='_blank'";
+                    }
+                    @endphp
+
                             @if ($categ->CatId == $product->ProdCatId)
 
                                 <article class="product">
-                                    <a class="clickable-area" href="javascript:;">
+                                    <a class="clickable-area" href="{{$link}}" {{$alvo}}>
                                         <header class="product__header">
                                             <h3 class="title-medium">{{$product->ProdNome}}</h3>
                                             <div class="card__cover">
@@ -79,6 +97,9 @@
                                         @if ($product->ProdEncomenda == 1)
                                             <img class="exclusive__label" src="{{asset('images/label_encomenda.png')}}" alt="Aceita encomenda">
                                         @endif
+                                        @php
+                                            echo $linkImag;
+                                        @endphp
                                     </a>
                                     <section class="product__content">
                                         <div class="product__desciption">

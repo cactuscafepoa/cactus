@@ -18,7 +18,8 @@ Configurações
 @endif
 
 <div class="d-flex justify-content-between">
-	<a href="{{route('form_edit_configuracao_new')}}" class="btn btn-primary mt-2 mb-2">Incluir Configuração</a>
+	<!--<a href="{{route('form_edit_configuracao_new')}}" class="btn btn-primary mt-2 mb-2">Incluir Configuração</a>-->
+	<span></span>
 	<a href="{{route('dashboard')}}" class="btn btn-primary mt-2 mb-2">Voltar</a>
 </div>
 

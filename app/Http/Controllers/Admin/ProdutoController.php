@@ -295,7 +295,12 @@ class ProdutoController extends Controller {
 /* GERA ARQUIVO PDF DE HTML */
 	public function createPDF(Request $request) {
 
-		//ddd($request);
+		//dd($request); 		dd($request->produtos);
+		if (is_null($request->produtos)) { // usuário não escolheu nenhum produto
+			$request->session()->flash('mensagem',"Ao menos um produto deve estar assinalado para gerar-se cardápio físico.");
+			return redirect()->route('listar_produtos');
+		}
+
         $dataset = DB::table('categorias')
         ->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
         ->select(  'categorias.nome AS CatNome',
@@ -307,13 +312,24 @@ class ProdutoController extends Controller {
         ->orderBy('produtos.nome', 'asc')
         ->get();  //ddd($dataset);
 
-		$pdf = PDF::loadView('admin.produto.pdf_view', compact('dataset'));
+		$dataset = $dataset->chunk(50);  //dd($dataset);  dd(count($dataset));
+
+		$pdf = PDF::loadView('admin.produto.pdf_view',
+			['dataset' => $dataset,
+			'qtdArrays' => count($dataset),
+			'chunk' => 40,
+        	]
+		);
 
 		//$pdf->set_paper('a4', 'portrait');
 
 		$pdf->render();
 		return $pdf->stream('cardapio.pdf');
-		//return view('admin.produto.pdf_view', compact('dataset'));
+		/*return view('admin.produto.pdf_view',
+			[	'dataset' => $dataset,
+				'qtdArrays' => count($dataset),
+			]
+		);*/
 	}
 
 	protected static function booted()
