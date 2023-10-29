@@ -14,7 +14,7 @@ class AddColumnsConfiguracaosQtdColCardFisico extends Migration
     public function up()
     {
         Schema::table('configuracaos', function (Blueprint $table) {
-            $table->string('cardapio_fisico_qtd')->nullable()->after('evento_id');
+            $table->integer('cardapio_fisico_qtd')->nullable()->after('evento_id');
         });
     }
 
