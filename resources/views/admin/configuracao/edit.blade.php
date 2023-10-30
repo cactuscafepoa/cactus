@@ -105,9 +105,19 @@ Alterar Configuração
             </label>
             <label for="prato_dia" class="ml-4">Mostrar o bloco PRATOS DO DIA (refeições que serão servidas no dia seguinte)?</label>
         </div>
-        <label for="prato_dia_titulo">Título a ser mostrado</label>
-        <input type="text" class="form-control" name="prato_dia_titulo" id="prato_dia_titulo" value="{{$configuracao[0]->prato_dia_titulo}}">
-        <label for="prato_dia_texto">Texto a ser mostrado</label>
+        <label for="prato_dia_botao">Texto do botão da página inicial</label>
+        <input type="text" class="form-control" name="prato_dia_botao" id="prato_dia_botao" value="{{$configuracao[0]->prato_dia_botao}}">
+
+        <label for="prato_dia_botao_texto">Texto do bloco do botão da página inicial</label>
+        <input type="text" class="form-control" name="prato_dia_botao_texto" id="prato_dia_botao_texto" value="{{$configuracao[0]->prato_dia_botao_texto}}">
+
+        <label for="prato_dia_cabecalho">Cabeçalho da página</label>
+        <input type="text" class="form-control" name="prato_dia_cabecalho" id="prato_dia_cabecalho" value="{{$configuracao[0]->prato_dia_cabecalho}}">
+
+        <label for="prato_dia_texto_titulo">Texto destaque da página</label>
+        <input type="text" class="form-control" name="prato_dia_texto_titulo" id="prato_dia_texto_titulo" value="{{$configuracao[0]->prato_dia_texto_titulo}}">
+
+        <label for="prato_dia_texto">Texto da página</label>
         <input type="text" class="form-control" name="prato_dia_texto" id="prato_dia_texto" value="{{$configuracao[0]->prato_dia_texto}}">
 
         <hr style="border:3px solid ;border-radius: 5px;">

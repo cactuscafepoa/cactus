@@ -14,7 +14,7 @@
                     @if ($configuracao[0]->botao_inicial == "cardapio")
                         <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">Cardápio</a>
                     @elseif ($configuracao[0]->botao_inicial == "pratos")
-                        <a href="{{route('site.refeicoes')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">{{$configuracao[0]->prato_dia_titulo}}</a>
+                        <a href="{{route('site.refeicoes')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">{{$configuracao[0]->prato_dia_botao}}</a>
                     @elseif ($configuracao[0]->botao_inicial == "encomendas")
                         <a href="{{route('site.encomendas')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">Encomendas</a>
                     @elseif ($configuracao[0]->botao_inicial == "novidades")
@@ -34,7 +34,7 @@
         <section class="cultivation__category">
             <picture>
                 <source media="(max-width: 768px)" srcset="./images/fundo_transparente_botoes_capa.png">
-                <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="Capios accelerare, tanquam superbus stella. cur rector volare?" width="297" height="447">
+                <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
             </picture>
             <div class="infos__category">
                 <h2 class="title-large"><strong>Cardápio</strong></h2>
@@ -48,8 +48,8 @@
     @php
     if ($configuracao[0]->prato_dia) {
         $tituloDelicia = "Produtos do dia";
-        if (!is_null($configuracao[0]->prato_dia_titulo) && $configuracao[0]->prato_dia_titulo != "")
-            $tituloDelicia = $configuracao[0]->prato_dia_titulo;
+        if (!is_null($configuracao[0]->prato_dia_botao) && $configuracao[0]->prato_dia_botao != "")
+            $tituloDelicia = $configuracao[0]->prato_dia_botao;
         @endphp
         <section class="cultivation__category">
             <picture>
@@ -59,7 +59,7 @@
             <div class="infos__category" style="left: 20px;">
                 <h2 class="title-large"><strong>{{ $tituloDelicia }}</strong></h2>
                 <hr class="thick_divider">
-                <p style="color:#8a99a8;">{{ $configuracao[0]->prato_dia_texto }}</p>
+                <p style="color:#8a99a8;">{{ $configuracao[0]->prato_dia_botao_texto }}</p>
                 <a href="{{route('site.refeicoes')}}" role="button" class="button button_accent button_large">{{$tituloDelicia}}</a>
             </div>
             <!--<img class="home-pattern" src="{{asset('images/home-dots-pattern.svg')}}" alt="">-->

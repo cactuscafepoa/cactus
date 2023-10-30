@@ -83,8 +83,15 @@
                                         <header class="product__header">
                                             <h3 class="title-medium">{{$product->ProdNome}}</h3>
                                             <div class="card__cover">
+                                                @php
+                                                //dd($product->ProdEncomendaPrecoVenda);
+                                                if ($product->ProdEncomendaPrecoVenda == "0.00" || is_null($product->ProdEncomendaPrecoVenda) )
+                                                    $valorProduto = number_format($product->ProdPrecoVenda,2,',','.');
+                                                else
+                                                    $valorProduto = number_format($product->ProdEncomendaPrecoVenda,2,',','.');
+                                                @endphp
                                                 <span style="background-color:#31a575;color: #fff;border-radius: 4px;padding: 0 10px;font-size: 16px;position: absolute;top: -12px;font-weight: bold;text-align: right;">
-                                                    R$ {{number_format($product->ProdEncomendaPrecoVenda,2,',','.')}}
+                                                    R$ {{$valorProduto}}
                                                 </span>
                                                 @if ($product->ProdDestaque == 1)
                                                     <img class="novidade__label" src="{{asset('images/label_novidade.png')}}" alt="Novidade">

@@ -159,9 +159,12 @@ class ConfiguracaoController extends Controller
 
         'cardapio'       		       => $input['cardapio'],
 
-        'prato_dia' 		        => $input['prato_dia'],
-        'prato_dia_titulo'	    => $input['prato_dia_titulo'],
-        'prato_dia_texto'     	=> $input['prato_dia_texto'],
+        'prato_dia' 		         => $input['prato_dia'],
+        'prato_dia_botao'        => $input['prato_dia_botao'],
+        'prato_dia_botao_texto'  => $input['prato_dia_botao_texto'],
+        'prato_dia_cabecalho'	   => $input['prato_dia_cabecalho'],
+        'prato_dia_texto_titulo' => $input['prato_dia_texto_titulo'],
+        'prato_dia_texto'     	 => $input['prato_dia_texto'],
 
         'encomendas'		          => $input['encomendas'],
         'encomendas_titulo'       => $input['encomendas_titulo'],

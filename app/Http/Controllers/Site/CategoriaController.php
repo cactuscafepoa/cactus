@@ -100,6 +100,7 @@ class CategoriaController extends Controller
                    'produtos.categoria_id AS ProdCatId',
                    'produtos.nome AS ProdNome',
                    'produtos.descricao AS ProdDescricao',
+                   'produtos.preco_venda AS ProdPrecoVenda',
                    'produtos.encomenda_preco_venda AS ProdEncomendaPrecoVenda',
                    'produtos.encomenda_quantidade_minima AS ProdEncQtdMin',
                    'produtos.encomenda_prazo_minimo AS ProdEncPrazoMin',
@@ -124,10 +125,12 @@ class CategoriaController extends Controller
         $dataset = DB::table('produtos')
         ->select(  'produtos.nome AS ProdNome',
                    'produtos.descricao AS ProdDescricao',
-                   'produtos.encomenda_preco_venda AS ProdEncomendaPrecoVenda',
+                   'produtos.preco_venda AS ProdPrecoVenda',
+                   /*'produtos.encomenda_preco_venda AS ProdEncomendaPrecoVenda',*/
                    'produtos.encomenda_quantidade_minima AS ProdEncQtdMin',
                    'produtos.encomenda_prazo_minimo AS ProdEncPrazoMin',
                    'produtos.encomenda AS ProdEncomenda',
+                   'produtos.link AS ProdLink',
                    DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
                    'produtos.destaque AS ProdDestaque', )
         ->where('produtos.visivel', '=',  '1')
@@ -138,7 +141,7 @@ class CategoriaController extends Controller
 
         return view('site.categoria.refeicoes', [
             'produto' => $dataset,
-            'configuracao' => Configuracao::all('prato_dia','prato_dia_titulo','prato_dia_texto'),
+            'configuracao' => Configuracao::all('prato_dia','prato_dia_cabecalho', 'prato_dia_texto_titulo', 'prato_dia_texto'),
         ]);
     }
 
@@ -148,10 +151,12 @@ class CategoriaController extends Controller
         $dataset = DB::table('produtos')
         ->select(  'produtos.nome AS ProdNome',
                    'produtos.descricao AS ProdDescricao',
-                   'produtos.encomenda_preco_venda AS ProdEncomendaPrecoVenda',
+                   'produtos.preco_venda AS ProdPrecoVenda',
+                   /*'produtos.encomenda_preco_venda AS ProdEncomendaPrecoVenda',*/
                    'produtos.destaque AS ProdDestaque',
                    'produtos.destaque_texto AS ProdDestTexto',
                    'produtos.encomenda AS ProdEncomenda',
+                   'produtos.link AS ProdLink',
                    DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'))
         ->where('produtos.visivel', '=',  '1')
         ->where('produtos.destaque', '=',  '1')
