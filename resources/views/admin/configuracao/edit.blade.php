@@ -44,7 +44,8 @@ Alterar Configuração
             <option value="novidades" {{($configuracao[0]->botao_inicial == "novidades") ? 'selected' : ''}}>Novidades</option>
         </select>
 
-        <label for="imagem">Imagem da capa do site (jpg, jpeg, png, bmp, gif ou webp - a imagem original possui 1024 x 768 pixels)</label>
+        <!--<label for="imagem">Imagem da capa do site (jpg, jpeg, png, bmp, gif ou webp - a imagem original possui 1024 x 768 pixels)</label>-->
+        <label for="imagem">Imagem da capa do site (apenas jpg - a imagem original possui 1024 x 768 pixels)</label>
         <div style='display:flex;align-items:center;justify-content:space-between;'>
             <div style='display:flex;align-items:center;width:75%;'>
                 <img src="{{asset('images/banner_capa.jpg')}}" alt="" class="img-thumbnail" height="100px" width="100px">
