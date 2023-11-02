@@ -12,13 +12,13 @@
 
                     <!-- CONFIGURAÇÃO DO BOTÃO DA PÁGINA INICIAL  -->
                     @if ($configuracao[0]->botao_inicial == "cardapio")
-                        <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">Cardápio</a>
+                        <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Cardápio</a>
                     @elseif ($configuracao[0]->botao_inicial == "pratos")
-                        <a href="{{route('site.refeicoes')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">{{$configuracao[0]->prato_dia_botao}}</a>
+                        <a href="{{route('site.refeicoes')}}" role="button" class="button button_accent button_large">{{$configuracao[0]->prato_dia_botao}}</a>
                     @elseif ($configuracao[0]->botao_inicial == "encomendas")
-                        <a href="{{route('site.encomendas')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">Encomendas</a>
+                        <a href="{{route('site.encomendas')}}" role="button" class="button button_accent button_large">Encomendas</a>
                     @elseif ($configuracao[0]->botao_inicial == "novidades")
-                        <a href="{{route('site.novidades')}}" role="button" class="button button_accent button_large" style="width:20%;justify-content: center;">Novidades</a>
+                        <a href="{{route('site.novidades')}}" role="button" class="button button_accent button_large">Novidades</a>
                     @endif
                 </div>
             </div>

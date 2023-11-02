@@ -24,13 +24,13 @@
 	</div>
 
 	<div style="text-align:center;">
-		<h1 style="font-size:20px;padding:0px;margin:0px;">Horário de atendimento</h1>
+		<h1 style="font-size:24px;padding:0px;margin:30px 0px 0px 0px;font-weight:bolder;">HORÁRIO DE ATENDIMENTO</h1>
 	</div>
 
 	<div style="padding:0px;margin:0px;">
-		<p style='font-size:16px;'>{{ $dataset[0]->aviso}}</p>
-		<p style='font-size:16px;'>{{ $dataset[0]->atendimento_fisico}}</p>
-		<p style='font-size:16px;'>{{ $dataset[0]->atendimento_encomendas}}</p>
+		<p style='font-size:18px;'>{{ $dataset[0]->aviso}}</p>
+		<p style='font-size:18px;'>{{ $dataset[0]->atendimento_fisico}}</p>
+		<p style='font-size:18px;'>{{ $dataset[0]->atendimento_encomendas}}</p>
 	</div>
 
 	<table border='0' cellspacing="0" cellpadding="5" style="width:100%;">

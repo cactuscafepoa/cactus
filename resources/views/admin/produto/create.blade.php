@@ -67,7 +67,7 @@ Adicionar Produto
             <input type="text" class="form-control" name="preco" id="preco" value="{{old('preco')}}">
             </span>
             <span style="width:24%;">
-            <label for="preco_venda">Preço Venda</label>
+            <label for="preco_venda">Preço Venda*</label>
             <input type="text" class="form-control" name="preco_venda" id="preco_venda" value="{{old('preco_venda')}}">
             </span>
             <span style="width:24%;">
@@ -157,7 +157,7 @@ Adicionar Produto
                 </label>
             </span>
             <span style="width:20%;">
-                <label for="encomenda_preco_venda">Preço Venda</label>
+                <label for="encomenda_preco_venda">Preço Venda Encomenda</label>
                 <input type="text" class="form-control" name="encomenda_preco_venda" id="encomenda_preco_venda" value="{{old('encomenda_preco_venda')}}">
             </span>
             <span style="width:20%;">

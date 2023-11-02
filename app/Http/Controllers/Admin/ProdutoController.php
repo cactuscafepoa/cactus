@@ -118,7 +118,7 @@ class ProdutoController extends Controller {
      * Update the specified resource in storage.
      */
     public function update(ProdutoFormRequest $request, Produto $produto)
-	{  //ddd($request->preco); exit;
+	{   //dd($request->preco_venda);
 
 		if ($request->visivel == 'on') $request->visivel = 1; else $request->visivel = 0;
 		if ($request->encomenda == 'on') $request->encomenda = 1; else $request->encomenda = 0;
@@ -254,6 +254,16 @@ class ProdutoController extends Controller {
 	{  //dd($request);
 
 		if (!empty($request->preco_venda)) {
+			// verifica se o preço é um valor váliddo
+			/*$valor = $request->preco_venda;
+			$pattern= "/^\([0-9]$/";
+			if ( preg_match($pattern, $valor) == 1 ) {
+				dd("1 -" . preg_match($pattern, $valor) );
+			}
+			else {
+				dd("0 -" . preg_match($pattern, $valor));
+			}*/
+
 			$request->preco_venda = str_replace(".","",$request->preco_venda);
 			$request->preco_venda = str_replace(",",".",$request->preco_venda);
 		}
@@ -264,7 +274,7 @@ class ProdutoController extends Controller {
 		$dataset = DB::table('produtos')
 		->where('id', $request->id)
 		->update([
-			'preco_venda' 			=> $request->preco_venda,
+			'preco_venda' => $request->preco_venda,
 		]);
 		$request->session()->flash("mensagem","Preço de venda do produto {$request->nome} atualizado com sucesso.");
 		return redirect()->route('listar_produtos');

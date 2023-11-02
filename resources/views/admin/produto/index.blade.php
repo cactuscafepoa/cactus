@@ -10,6 +10,15 @@ Relação de Produtos
 	{{$mensagem}}
 </div>
 @endif
+@if ($errors->any())
+    <div class="alert alert-danger mt-3">
+        <ul class="mb-0">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
 
 
 <form name='form_pdf' id='form_pdf' method="post" action="{{route('pdf_produto_envia')}}">
@@ -127,6 +136,7 @@ Relação de Produtos
 	<input type="hidden" id="idPreco" name="id" value=""/>
 	<input type="hidden" id="preco_venda" name="preco_venda" value=""/>
 	<input type="hidden" id="nome" name="nome" value=""/>
+	<input type="hidden" id="tpOper" name="tpOper" value="atualiza_preco"/>
 </form>
 
 <script>
@@ -145,6 +155,7 @@ Relação de Produtos
 		document.getElementById("idPreco").value = id;
 		document.getElementById("preco_venda").value = document.getElementById("input-preco-novo-"+id).value;
 		document.getElementById("nome").value = nome;
+		//alert(document.getElementById("idPreco").value + " - " + document.getElementById("preco_venda").value + "-" + document.getElementById("nome").value);
 		document.getElementById('formPreco').submit();
 	}
 	function cardapio() {

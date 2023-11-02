@@ -13,7 +13,7 @@ Configuração de Horário
 
 
 <div class="d-flex justify-content-between">
-	<a href="{{route('form_edit_horario_new')}}" class="btn btn-primary mt-2 mb-2">Incluir Horário</a>
+	<!--<a href="{{route('form_edit_horario_new')}}" class="btn btn-primary mt-2 mb-2">Incluir Horário</a>-->
 
 	<a class="btn btn-primary mt-2 mb-2" onclick="horario();">Imprimir Horário</a>
 
@@ -59,12 +59,12 @@ Configuração de Horário
 						<i class="fas fa-edit"></i>
 					</button>
 			</form>
-			<form name='excluir' method="post" action="/horarios/remover/{{$horario->id}}" onsubmit="return confirm('Confirma remoção do horario: {{addslashes($horario->dia_semana)}}?');" style="height:8px;">
+			<!--<form name='excluir' method="post" action="/horarios/remover/{{$horario->id}}" onsubmit="return confirm('Confirma remoção do horario: {{addslashes($horario->dia_semana)}}?');" style="height:8px;">
 				@csrf
 				<button class="btn btn-danger btn-sm mr-2">
 					<i class="fas fa-trash-alt"></i>
 				</button>
-			</form>
+			</form>-->
 		</span>
 	</li>
 	@endforeach

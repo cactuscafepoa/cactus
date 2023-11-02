@@ -71,7 +71,7 @@ Editar Produto
                 <input type="text" class="form-control" name="preco" id="preco" value="{{$valor}}">
             </span>
             <span style="width:24%;">
-                <label for="preco_venda">Preço Venda</label>
+                <label for="preco_venda">Preço Venda*</label>
                 <input type="text" class="form-control" name="preco_venda" id="preco_venda" value="{{$valor_venda}}">
             </span>
             <span style="width:24%;">
@@ -164,7 +164,7 @@ Editar Produto
                 $valorencomenda = number_format($produto[0]->encomenda_preco_venda,2,",",".");
             @endphp
             <span style="width:20%;">
-                <label for="encomenda_preco_venda">Preço Venda</label>
+                <label for="encomenda_preco_venda">Preço Venda Encomenda</label>
                 <input type="text" class="form-control" name="encomenda_preco_venda" id="encomenda_preco_venda" value="{{$valorencomenda}}">
             </span>
             <span style="width:20%;">
