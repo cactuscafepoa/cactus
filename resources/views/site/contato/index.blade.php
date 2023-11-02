@@ -11,8 +11,8 @@
 
     <div class="gray-background">
         <section class="main-wrapper" style="padding: 10px 0 20px 0;">
-            <h1 class="display-medium">Para falar conosco ou nos conhecer</h1>
-            <p>Suas sugestões são importantes para o nosso crescimento.</p>
+            <h1 class="display-medium">Fale conosco!</h1>
+            <p>Sugestões e crítcas são importantes para o crescimento.</p>
             <section class="contact__options"  style="grid-template-columns: initial;max-width: 1040px;">
                 <div class="contact__infos" style="text-align:center;">
                     <div>
