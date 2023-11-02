@@ -12,7 +12,7 @@
     <div class="gray-background">
         <section class="main-wrapper" style="padding: 10px 0 20px 0;">
             <h1 class="display-medium">Fale conosco!</h1>
-            <p>Sugestões e crítcas são importantes para o crescimento.</p>
+            <p>Sugestões e críticas são importantes para nosso crescimento.</p>
             <section class="contact__options"  style="grid-template-columns: initial;max-width: 1040px;">
                 <div class="contact__infos" style="text-align:center;">
                     <div>
