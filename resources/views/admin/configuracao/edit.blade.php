@@ -47,7 +47,7 @@ Alterar Configuração
         <label for="imagem">Imagem da capa do site (jpg, jpeg, png, bmp, gif ou webp - a imagem original possui 1024 x 768 pixels)</label>
         <div style='display:flex;align-items:center;justify-content:space-between;'>
             <div style='display:flex;align-items:center;width:75%;'>
-                <img src="{{asset('images/banner_capa')}}" alt="" class="img-thumbnail" height="100px" width="100px">
+                <img src="{{asset('images/banner_capa.jpg')}}" alt="" class="img-thumbnail" height="100px" width="100px">
                 <input type="file" class="form-control ml-5" name="imagem" id="imagem" value="">
             </div>
         </div>
