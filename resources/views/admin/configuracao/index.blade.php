@@ -95,4 +95,7 @@ Configurações
 	<a href="{{route('phpinfo')}}" >PhpInfo</a>
 </div>
 
+<div class="d-flex justify-content-between" style="margin-top:20px;">
+	<a href="https://analytics.google.com/" >Google Analytics</a>
+</div>
 @endsection
