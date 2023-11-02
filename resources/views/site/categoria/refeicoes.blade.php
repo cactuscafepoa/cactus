@@ -64,8 +64,7 @@
                         </a>
                         <section class="product__content">
                             <div class="product__desciption">
-                                {{$product->ProdEncQtdMin}}<br>
-                                {{$product->ProdEncPrazoMin}}
+                                {{$product->ProdDescricao}}
                             </div>
                         </section>
 
