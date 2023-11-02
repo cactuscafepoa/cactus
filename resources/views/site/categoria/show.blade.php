@@ -25,7 +25,7 @@
         <div class="pattern__header"></div>
     </header>
 
-    <div class="products__general main-wrapper"  style="margin-top:-20px;margin-bottom: -30px;">
+    <div class="products__general main-wrapper"  style="margin-top:-20px;margin-bottom: -30px;display:block;">
         <!--
         <aside class="product__selected" style="margin-bottom: 10px;">
             <article class="card__product" style="margin-top: 101px;">
@@ -45,7 +45,7 @@
             </section>
         </aside>
         -->
-        <section class="products__list">
+        <section class="products__list" style="margin-bottom:30px;">
             <header>
                 <!--<h2 class="title-large">{{ $categoria[0]->CatNome }}</h2>-->
             </header>
@@ -98,20 +98,9 @@
                         </div>
                     </section>
                 </article>
-
-                @php
-                    if ($loop->index >= 4 && $loop->last) { @endphp
-                        <section class="products__cultivation__category main-wrapper" style="padding:0px;display: flex;">
-                            <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Voltar</a>
-                        </section>
-                    @php }
-                @endphp
-
-
             @endforeach
         </section>
+        <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large" style="margin-left:20px;margin-bottom:48px;">Voltar</a>
     </div>
-
 @endif
-
 @endsection
