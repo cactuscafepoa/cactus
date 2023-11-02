@@ -16,8 +16,7 @@
 				<p style="text-align:initial;">{{ $dataset[0]->atendimento_fisico}}</p>
 				<p style="text-align:initial;">{{ $dataset[0]->atendimento_encomendas}}</p>
 				<section class="contact__options" style="grid-template-columns: initial;max-width: 1040px;">
-					<div class="contact__infos">
-
+					<div class="contact__infos" style="padding:4px;font-size:14px;">
 						<ul class="list-group">
 							<li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white" style="height:48px;">
 								<span class="d-flex" style='width:15%;'>
