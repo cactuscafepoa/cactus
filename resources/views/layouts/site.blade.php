@@ -153,7 +153,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <footer class="main_footer" style="padding: 10px 0px 0px 0px;border-top: solid 1px #d1d9e0;">
     <div class="main-wrapper flex-container" style="display:initial;">
-        <ul style="justify-content: space-evenly;margin-bottom:initial;">
+        <ul style="justify-content: space-evenly;margin-bottom:initial;padding-left:0px;">
             <li class="footer__links">
                 <h4 class="title-small">Siga-nos</h4>
                 <a class="decor_text_menu" href="https://www.instagram.com/cactuscafepoa/" target="_blank">Instagram Cactus Café Poa</a>
