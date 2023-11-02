@@ -145,7 +145,7 @@ class ConfiguracaoController extends Controller
         if ($request->file('imagem')) {
           $path = public_path().'/images/'; //dd($path);
           $file = $request->file('imagem'); //dd($path);
-          $filename = "banner_capa";    //dd($filename);
+          $filename = "banner_capa.jpg";    //dd($filename);
           $file->move($path, $filename);
         }
 
