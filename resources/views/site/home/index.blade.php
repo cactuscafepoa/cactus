@@ -281,7 +281,7 @@
 
 <section class="blog" style="padding:0px;background-color: #B1D8B7;">
     <div class="main-wrapper" style="padding: 10px;">
-        <div class="blog__container" style="display: inline-flex;">
+        <div class="blog__container">
             <div class="blog__introduction" style="height: initial;text-align: center;">
                 <img src="{{asset('images/lisiane.png')}}" style="border-radius: 4px 4px 0 0;width: 60%;">
             </div>
