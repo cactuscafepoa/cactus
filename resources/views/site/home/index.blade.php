@@ -287,8 +287,8 @@
             </div>
 				<div class="post__cover" style="max-height: initial;overflow: initial;">
 					<h2 class="title-large" style="color:#4c5967;">Olá!</h2>
-					<p style="padding: 0px;color:#4c5967;">Oi! Sou a Lisiane. Gostaria de apresentar para vocês as delícias que o Cactus Café tem para proporcionar para vocês.</p>
-					<p style="padding: 0px;color:#4c5967;">Sou a proprietária e confeiteira do Cactus Café.</p>
+					<p style="padding: 0px;color:#4c5967;">Sou a Lisiane, nova proprietária e confeiteira do Cactus Café Poa. Neste site você encontra todos os produtos que oferecemos.</p>
+					<p style="padding: 0px;color:#4c5967;">Praticamente 80% do que servimos são produzidos por mim. Produtos feitos com amor e dedicação.</p>
 					<p style="padding: 0px;color:#4c5967;">Aguardo vocês para uma visita e um encontro com os amigos apreciando um delicioso café.</p>
 				</div>
         </div>
