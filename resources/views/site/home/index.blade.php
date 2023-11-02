@@ -8,8 +8,7 @@
             <div class="main-wrapper">
                 <div class="hero__content">
                     <h1 class="display-large" style="color:#79e18b;margin-top:20%;">{{$configuracao[0]->pagina_inicial_titulo}}</h1>
-                    <p style="color: #79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;width:60%;">{{$configuracao[0]->pagina_inicial_texto}}</p>
-
+                    <p style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">{{$configuracao[0]->pagina_inicial_texto}}</p>
                     <!-- CONFIGURAÇÃO DO BOTÃO DA PÁGINA INICIAL  -->
                     @if ($configuracao[0]->botao_inicial == "cardapio")
                         <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Cardápio</a>
@@ -28,15 +27,15 @@
 </header>
 
 <!--<section class="category gray-background" style="padding:0px;background-image: linear-gradient(#d2dfed,#204265);padding:145px 0px 145px 0px;">-->
-<section class="category gray-background" style="background-color: #94C973;padding:10px;">
+<section class="category gray-background" style="background-color:#94C973;padding:20px 0px 20px 0px;">
     <div class="main-wrapper flex-container">
 
         <section class="cultivation__category">
-            <picture>
+            <!--<picture>
                 <source media="(max-width: 768px)" srcset="./images/fundo_transparente_botoes_capa.png">
                 <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
-            </picture>
-            <div class="infos__category">
+            </picture>-->
+            <div class="infos__category" style="max-width:330px;margin:10px;position:initial;">
                 <h2 class="title-large"><strong>Cardápio</strong></h2>
                 <hr class="thick_divider">
                 <p style="color:#8a99a8;">Veja todas as opções do nosso cardápio.</p>
@@ -52,11 +51,11 @@
             $tituloDelicia = $configuracao[0]->prato_dia_botao;
         @endphp
         <section class="cultivation__category">
-            <picture>
+            <!--<picture>
                 <source media="(max-width: 768px)" srcset="{{asset('images/fundo_transparente_botoes_capa.png')}}">
                 <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
-            </picture>
-            <div class="infos__category" style="left: 20px;">
+            </picture>-->
+            <div class="infos__category" style="max-width:330px;margin:10px;position:initial;">
                 <h2 class="title-large"><strong>{{ $tituloDelicia }}</strong></h2>
                 <hr class="thick_divider">
                 <p style="color:#8a99a8;">{{ $configuracao[0]->prato_dia_botao_texto }}</p>
@@ -69,11 +68,11 @@
     @php
     if ($configuracao[0]->novidades) { @endphp
         <section class="cultivation__category">
-            <picture>
+            <!--<picture>
                 <source media="(max-width: 768px)" srcset="{{asset('images/fundo_transparente_botoes_capa.png')}}">
                 <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
-            </picture>
-            <div class="infos__category" style="left: 20px;">
+            </picture>-->
+            <div class="infos__category" style="max-width:330px;margin:10px;position:initial;">
                 <h2 class="title-large"><strong>Novidades</strong></h2>
                 <hr class="thick_divider">
                 <p style="color:#8a99a8;">Novidades e destaques do Cactus Café.</p>
@@ -86,11 +85,11 @@
     @php
     if ($configuracao[0]->encomendas) { @endphp
         <section class="cultivation__category">
-            <picture>
+            <!--<picture>
                 <source media="(max-width: 768px)" srcset="{{asset('images/fundo_transparente_botoes_capa.png')}}">
                 <img src="{{asset('images/fundo_transparente_botoes_capa.png')}}" alt="" width="297" height="447">
-            </picture>
-            <div class="infos__category" style="left: 20px;">
+            </picture>-->
+            <div class="infos__category" style="max-width:330px;margin:10px;position:initial;">
                 <h2 class="title-large"><strong>Encomendas</strong></h2>
                 <hr class="thick_divider">
                 <p style="color:#8a99a8;">Saiba como realizar encomendas.</p>

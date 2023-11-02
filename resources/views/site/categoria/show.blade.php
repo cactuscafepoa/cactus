@@ -25,11 +25,11 @@
         <div class="pattern__header"></div>
     </header>
 
-    <div class="products__general main-wrapper"  style="margin-top:-50px;margin-bottom: -30px;">
-
+    <div class="products__general main-wrapper"  style="margin-top:-20px;margin-bottom: -30px;">
+        <!--
         <aside class="product__selected" style="margin-bottom: 10px;">
             <article class="card__product" style="margin-top: 101px;">
-                <a> <!--href="products-detail.php"-->
+                <a> href="products-detail.php"
                     <div class="card__cover">
                         <img src="{{asset($categoria[0]->CatImagem)}}" style="width: 222px;">
                     </div>
@@ -44,7 +44,7 @@
                 <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Voltar</a>
             </section>
         </aside>
-
+        -->
         <section class="products__list">
             <header>
                 <!--<h2 class="title-large">{{ $categoria[0]->CatNome }}</h2>-->

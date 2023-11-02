@@ -77,7 +77,7 @@ Alterar Configuração
                 <input type="checkbox" name="novidades" id="novidades" {{ $checked }}>
                 <span class="slider round"></span>
             </label>
-            <label for="novidades" class="ml-4">Mostrar bloco NOVIDADES?</label>
+            <label for="novidades" class="ml-4">Mostrar <strong>BLOCO NOVIDADES</strong>?</label>
 
             <label class="switch" style="margin-left:60px;">
                 @php
@@ -104,7 +104,7 @@ Alterar Configuração
                 <input type="checkbox" name="prato_dia" id="prato_dia" {{ $checked }}>
                 <span class="slider round"></span>
             </label>
-            <label for="prato_dia" class="ml-4">Mostrar o bloco PRATOS DO DIA (refeições que serão servidas no dia seguinte)?</label>
+            <label for="prato_dia" class="ml-4">Mostrar <strong>BLOCO PRATOS DO DIA</strong> (refeições que serão servidas no dia seguinte)?</label>
         </div>
         <label for="prato_dia_botao">Texto do botão da página inicial</label>
         <input type="text" class="form-control" name="prato_dia_botao" id="prato_dia_botao" value="{{$configuracao[0]->prato_dia_botao}}">
@@ -133,7 +133,7 @@ Alterar Configuração
                 <input type="checkbox" name="encomendas" id="encomendas"  {{ $checked }}>
                 <span class="slider round"></span>
             </label>
-            <label for="encomendas" class="ml-4">Mostrar página ENCOMENDAS?</label>
+            <label for="encomendas" class="ml-4">Mostrar <strong>BLOCO/PÁGINA ENCOMENDAS</strong>?</label>
         </div>
         <hr>
         <label for="encomendas_titulo">Título a ser mostrado</label>
