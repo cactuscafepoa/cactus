@@ -105,7 +105,7 @@
 <section class="blog" style="padding: 10px 0px 10px 0px;background-color: #768947;background-image: url(../images/so_cactus_verde.png);">
     <div class="main-wrapper">
         <div class="blog__container">
-            <div class="blog__introduction" style="height: initial;margin-top: 15px;background-image: url(../images/depoimentos/guardanapo.png);background-size: 100% 100%;padding: 5px;">
+            <div class="blog__introduction" style="text-align:initial;height:initial;margin-top: 15px;background-image: url(../images/depoimentos/guardanapo.png);background-size: 100% 100%;padding: 5px;">
                 <h2 class="title-large" style="color: #8a99a8;font-family: auto;font-size: 1.5rem;font-weight: bold;">Minha gratidão à <strong>"Family"</strong>, fonte de inspiração e coragem.</h2>
                 <p style="padding:5px 0px 0px 0px;color: #8a99a8;font-family: auto;font-size: 1.3rem;">Aos amigos, pelo incentivo e apoio nessa nova jornada que inicio.</p>
             </div>
