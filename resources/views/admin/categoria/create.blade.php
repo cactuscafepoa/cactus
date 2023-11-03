@@ -31,13 +31,13 @@ Adicionar Categoria
             </label>
         </div>
         <hr>
-        <label for="imagem">Imagem (jpg, jpeg, png, bmp, gif, svg ou webp)</label>
+        <label for="imagem">Imagem (jpg, jpeg, png, bmp, gif, svg ou webp de 275 x 180 pixels)</label>
         <input type="file" class="form-control" name="imagem" id="imagem" value="">
 
         <div class="d-flex justify-content-around">
             <button class="btn btn-primary mt-2" style="width:10%;">Salvar</button>
             <a class="btn btn-secondary mt-2 mx-9" style="width:10%;" href="{{route('listar_categorias')}}">Cancelar</a>
-        </div>        	        
+        </div>
 	</div>
 </form>
 @endsection

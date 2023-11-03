@@ -35,7 +35,7 @@ Editar Categoria
             </label>
         </div>
         <hr>
-        <label for="imagem">Imagem (jpg, jpeg, png, bmp, gif, svg ou webp)</label>
+        <label for="imagem">Imagem (jpg, jpeg, png, bmp, gif, svg ou webp de 275 x 180 pixels)</label>
         <div style='display:flex;align-items:center;justify-content:space-between;'>
             <div style='display:flex;align-items:center;width:75%;'>
                 <img src="{{$categoria[0]->imagem}}" alt="" class="img-thumbnail" height="100px" width="100px">
@@ -53,8 +53,8 @@ Editar Categoria
         <div class="d-flex justify-content-around">
             <button class="btn btn-primary mt-2" style="width:10%;">Salvar</button>
             <a class="btn btn-secondary mt-2 mx-9" style="width:10%;" href="{{route('listar_categorias')}}">Cancelar</a>
-        </div>        	        
+        </div>
 	</div>
-    <input type="hidden" id="id" name="id" value="{{$categoria[0]->id}}">    
+    <input type="hidden" id="id" name="id" value="{{$categoria[0]->id}}">
 </form>
 @endsection

@@ -136,7 +136,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 </nav>
 
 <!-- Hamburger menu list -->
-<div id="resize" style="background-color:#B1D8B7;">
+<div id="resize" style="background-color:#67cb76;">
     <ul id="menu">
         <li><a class="title-medium decor_text_menu" href="{{route('site.home')}}">Início</a></li>
         <li><a class="title-medium decor_text_menu" href="{{route('site.cardapio')}}">Cardápio</a></li>
