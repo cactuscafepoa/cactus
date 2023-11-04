@@ -8,8 +8,8 @@
             <div class="main-wrapper">
                 <div class="hero__content">
 
-                    <img src="{{asset('images/logo_banner.png')}}" alt="">
-                    <h1 class="display-large" style="color:#79e18b;margin-top:10%;">{{$configuracao[0]->pagina_inicial_titulo}}</h1>
+                    <img src="{{asset('images/logo_banner.png')}}" alt="" style="max-width:15%;">
+                    <h1 class="display-large" style="color:#79e18b;margin-top:8%;">{{$configuracao[0]->pagina_inicial_titulo}}</h1>
                     <p style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">{{$configuracao[0]->pagina_inicial_texto}}</p>
                     <!-- CONFIGURAÇÃO DO BOTÃO DA PÁGINA INICIAL  -->
                     @if ($configuracao[0]->botao_inicial == "cardapio")
@@ -23,10 +23,10 @@
                     @endif
                 </div>
                 <div style="position:relative;top:-70px;">
-                <span style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">Cafeteria</span>
-                <span style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">Confeitaria</span>
-                <span style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">Eventos</span>
-                <span style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">Encomendas</span>
+                <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Cafeteria</span>
+                <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Confeitaria</span>
+                <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Eventos</span>
+                <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Encomendas</span>
                 </div>
             </div>
         @endif
