@@ -7,7 +7,7 @@
         @if ($configuracao[0]->pagina_inicial)
             <div class="main-wrapper">
                 <div class="hero__content">
-                    <h1 class="display-large" style="color:#79e18b;margin-top:8%;">{{$configuracao[0]->pagina_inicial_titulo}}</h1>
+                    <h1 class="display-large" style="color:#79e18b;margin-top:28%;">{{$configuracao[0]->pagina_inicial_titulo}}</h1>
                     <p style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">{{$configuracao[0]->pagina_inicial_texto}}</p>
                     <!-- CONFIGURAÇÃO DO BOTÃO DA PÁGINA INICIAL  -->
                     @if ($configuracao[0]->botao_inicial == "cardapio")
@@ -19,12 +19,12 @@
                     @elseif ($configuracao[0]->botao_inicial == "novidades")
                         <a href="{{route('site.novidades')}}" role="button" class="button button_accent button_large">Novidades</a>
                     @endif
-                    <!--<div style="bottom:60px;">
+                    <div style="bottom:60px;">
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Cafeteria</span>
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Confeitaria</span>
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Eventos</span>
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Encomendas</span>
-                    </div>-->
+                    </div>
                 </div>
             </div>
         @endif
