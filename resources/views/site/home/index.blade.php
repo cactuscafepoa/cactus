@@ -8,7 +8,7 @@
             <div class="main-wrapper">
                 <div class="hero__content">
                     <h1 class="display-large" style="color:#79e18b;margin-top:20%;">{{$configuracao[0]->pagina_inicial_titulo}}</h1>
-                    <p style="color:#79e18b;font-size:1.5rem;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">{{$configuracao[0]->pagina_inicial_texto}}</p>
+                    <p style="color:#79e18b;background:rgb(0,0,0);opacity:0.6;border-radius:50px;padding:10px;">{{$configuracao[0]->pagina_inicial_texto}}</p>
                     <!-- CONFIGURAÇÃO DO BOTÃO DA PÁGINA INICIAL  -->
                     @if ($configuracao[0]->botao_inicial == "cardapio")
                         <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Cardápio</a>
