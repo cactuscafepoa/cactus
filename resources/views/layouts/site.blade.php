@@ -161,7 +161,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p style='font-size:0.9rem;'>Rua Felipe Neri, 461 Loja 101 - Bairro Auxiliadora, Porto Alegre - RS, 90.440-150.</p>
         <div>
             <!--<a href="http://mmpx.com.br/" target="_blank">Deisgn by <strong>MMPX</strong></a>-->
-            <p style='font-size: 0.8rem;'>Cactus Café Poa &copy;2023</p>
+            <p style='font-size: 0.8rem;'>&copy; Copyright Cactus Café Poa 2023</p>
         </div>
     </div>
 </section>
