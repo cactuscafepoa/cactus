@@ -19,12 +19,12 @@
                     @elseif ($configuracao[0]->botao_inicial == "novidades")
                         <a href="{{route('site.novidades')}}" role="button" class="button button_accent button_large">Novidades</a>
                     @endif
-                    <div>
+                    <!--<div>
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Cafeteria</span>
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Confeitaria</span>
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Eventos</span>
                         <span style="color:#79e18b;font-size:1.5rem;padding:5px;opacity:0.6;">Encomendas</span>
-                    </div>
+                    </div>-->
                 </div>
             </div>
         @endif
