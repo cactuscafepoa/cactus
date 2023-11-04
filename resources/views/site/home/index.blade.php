@@ -41,7 +41,6 @@
                 <p style="color:#8a99a8;">Veja todas as opções do nosso cardápio.</p>
                 <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large">Cardápio</a>
             </div>
-            <!--<img class="home-pattern" src="{{asset('images/home-dots-pattern.svg')}}" alt="">-->
         </section>
 
     @php
@@ -61,7 +60,6 @@
                 <p style="color:#8a99a8;">{{ $configuracao[0]->prato_dia_botao_texto }}</p>
                 <a href="{{route('site.refeicoes')}}" role="button" class="button button_accent button_large">{{$tituloDelicia}}</a>
             </div>
-            <!--<img class="home-pattern" src="{{asset('images/home-dots-pattern.svg')}}" alt="">-->
         </section>
     @php } @endphp
 
@@ -75,10 +73,9 @@
             <div class="infos__category" style="max-width:330px;margin:10px;position:initial;">
                 <h2 class="title-large"><strong>Novidades</strong></h2>
                 <hr class="thick_divider">
-                <p style="color:#8a99a8;">Novidades e destaques do Cactus Café.</p>
+                <p style="color:#8a99a8;">Novidades e destaques do Cactus Café Poa.</p>
                 <a href="{{route('site.destaques')}}" role="button" class="button button_accent button_large">Novidades</a>
             </div>
-            <!--<img class="home-pattern" src="{{asset('images/home-dots-pattern.svg')}}" alt="">-->
         </section>
     @php } @endphp
 
@@ -95,7 +92,6 @@
                 <p style="color:#8a99a8;">Saiba como realizar encomendas.</p>
                 <a href="{{route('site.encomendas')}}" role="button" class="button button_accent button_large">Encomendas</a>
             </div>
-            <!--<img class="home-pattern" src="{{asset('images/home-dots-pattern.svg')}}" alt="">-->
         </section>
     @php } @endphp
 
@@ -223,61 +219,6 @@
     </div>
     <div class="pattern"></div>
 </section>
-
-<!--<div class="gray-background testimonials__mobile">
-    <div class="main-wrapper flex-container">
-        <section class="testimonials">
-            <h2 class="title-large">Veja o que nossos clientes estão dizendo.<br>É muito bom!</h2>
-            <section class="flex-container">
-                <article class="quote">
-                    <div class="avatar__testimonial">
-                        <img src="{{asset('images/Avatar-testimonial.png')}}">
-                    </div>
-                    <blockquote>
-                        Sunt zeluses visum secundus, gratis barcases. Pius caesium solite magicaes mons est. Consilium
-                        messiss, tanquam altus epos. Sunt fluctuies tractare salvus, festus byssuses. Cum calcaria
-                        accelerare, omnes luraes manifestum alter, dexter rationees.
-                    </blockquote>
-                    <footer>
-                        <h4 class="title-medium">Nunquam talem stella. </h4>
-                        <p>Cur ratione observare? </p>
-                    </footer>
-                </article>
-
-                <article class="quote">
-                    <div class="avatar__testimonial">
-                        <img src="{{asset('images/Avatar-testimonial.png')}}">
-                    </div>
-                    <blockquote>
-                        Sunt zeluses visum secundus, gratis barcases. Pius caesium solite magicaes mons est. Consilium
-                        messiss, tanquam altus epos. Sunt fluctuies tractare salvus, festus byssuses. Cum calcaria
-                        accelerare, omnes luraes manifestum alter, dexter rationees.
-                    </blockquote>
-                    <footer>
-                        <h4 class="title-medium">Nunquam talem stella. </h4>
-                        <p>Cur ratione observare? </p>
-                    </footer>
-                </article>
-            </section>
-        </section>
-    </div>
-</div>-->
-
-<!-- FOTO DA LISIANE E HISTÓRICO DO CAFÉ E DELA -->
-<!--<section class="cta__home" style="padding: 40px 0px 40px 0px;background-color: #B1D8B7;">
-		<div class="cta__wrapper" style="margin-left: 16%;width: 20%;">
-            <img src="{{asset('images/lisiane.png')}}" style="border-radius: 4px 4px 0 0;width: 60%;">
-		</div>
-
-		<div class="cta__wrapper" style="text-align:left;margin-right:16%;">
-			<h2 class="title-large" style="color:#4c5967;">Olá!</h2>
-			<p style="padding: 0px;color:#4c5967;">Sou a Lisiane! Gostaria de apresentar para vocês as delícias que o Cactus Café tem para proporcionar para vocês.</p>
-			<p style="padding: 0px;color:#4c5967;">Sou a proprietária e confeiteira do Cactus Café.</p>
-			<p style="padding: 0px;color:#4c5967;">Aguardo vocês para uma visita e um encontro com os amigos apreciando um delicioso café.</p>        -->
-			<!--<a href="{{route('site.cardapio')}}" role="button" class="button button_accent">Conheça nossas delícias</a>-->
-		<!--</div>
-
-</section>-->
 
 <section class="blog" style="padding:0px;background-color: #B1D8B7;">
     <div class="main-wrapper" style="padding: 10px;">

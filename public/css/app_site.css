@@ -944,8 +944,8 @@ nav .navigation__itens__cms a:hover img {
 .hero {
     background-image: url(../images/banner_capa.jpg);
     background-repeat: no-repeat;
-    /*background-position: center center;*/
-    background-position: initial;
+    background-position: center center;
+    /*background-position: initial;*/
     background-size: cover;
     height: 100vh;
     text-align: center

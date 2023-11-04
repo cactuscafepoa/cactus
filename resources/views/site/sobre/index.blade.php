@@ -22,7 +22,7 @@
                 </section>
             </section>
             <section class="about__img__values"style="padding:5px 0px 5px 0px;">
-                <img src="{{asset('images/pilares.png')}}" alt="Cactus Café">
+                <img src="{{asset('images/pilares.png')}}" alt="Cactus Café Poa">
             </section>
         </div>
     </div>

@@ -12,7 +12,7 @@
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('dashboard') }}">
                         <!--<x-application-logo class="block h-10 w-auto fill-current text-gray-600" />-->
-                        <img src="{{ URL::asset('images/logo.png') }}" alt="Cactus Café" width="48" height="48">
+                        <img src="{{ URL::asset('images/logo.png') }}" alt="Cactus Café Poa" width="48" height="48">
                     </a>
                 </div>
 

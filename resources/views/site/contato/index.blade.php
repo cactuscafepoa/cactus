@@ -17,7 +17,7 @@
                 <div class="contact__infos" style="text-align:center;">
                     <div>
                         <div class="contact__infos__header" style="display: initial;">
-                            <img src="{{asset('images/phone-contact-icon.svg')}}" alt="">
+                            <img src="{{asset('images/phone-icon.svg')}}" alt="">
                             <h3 class="title-small" style="display:initial;margin-bottom:10px;">Telefone</h3>
                         </div>
                         <a title="clique no número do telefone para ligar" style="color:#FFFFFF;display:block;margin-top:10px;" href="tel:5130195922">(51) 3019-5922</a>

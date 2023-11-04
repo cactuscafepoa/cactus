@@ -9,7 +9,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 })(window,document,'script','dataLayer','GTM-MTXRMLSH');</script>
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
-<title>Cactus Café</title>
+<title>Cactus Café Poa</title>
 
 <link href="{{ URL::asset('css/bootstrap/bootstrap.min.css') }}" rel="stylesheet" crossorigin="anonymous">
 <link href="{{ URL::asset('css/bootstrap/_variables.scss') }}" rel="stylesheet" crossorigin="anonymous">
