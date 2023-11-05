@@ -18,32 +18,32 @@
 				<section class="contact__options" style="grid-template-columns: initial;max-width: 1040px;">
 					<div class="contact__infos" style="padding:4px;font-size:14px;">
 						<ul class="list-group">
-							<li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white font_celular" style="height:48px;padding:2px;">
-								<span class="d-flex" style='width:15%;'>
+							<li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white" style="height:48px;">
+								<span class="d-flex" style='width:20%;'>
 									Dia
 								</span>
-								<span class="d-flex" style='width:15%;'>
+								<!--<span class="d-flex" style='width:15%;'>
 
-								</span>
-								<span class="d-flex" style='width:20%;'>
+								</span>-->
+								<span class="d-flex" style='width:25%;'>
 									Abre
 								</span>
-								<span class="d-flex" style='width:20%;'>
+								<span class="d-flex" style='width:25%;'>
 									Fecha
 								</span>
 							</li>
 							@foreach ($dataset as $horario)
-							<li class="list-group-item d-flex justify-content-between align-items-center font_celular" style="padding:2px;">
-								<span class="d-flex" style='width:15%;'>
+							<li class="list-group-item d-flex justify-content-between align-items-center">
+								<span class="d-flex" style='width:20%;'>
 									{{ $horario->dia_semana}}
 								</span>
-								<span class="d-flex" style='width:15%;'>
+								<!--<span class="d-flex" style='width:15%;'>
 									{{ $horario->aberto}}
-								</span>
-								<span class="d-flex" style='width:20%;'>
+								</span>-->
+								<span class="d-flex" style='width:25%;'>
 									{{ $horario->hora_abre}}
 								</span>
-								<span class="d-flex" style='width:20%;'>
+								<span class="d-flex" style='width:25%;'>
 									{{ $horario->hora_fecha}}
 								</span>
 							</li>
