@@ -2218,11 +2218,15 @@ nav .navigation__itens__cms a:hover img {
 
     .title-large {
         font-size: 1.2rem;
-        text-align: initial;
     }
 }
 
 @media only screen and (max-width: 768px) {
+
+    .title-large {
+        text-align:left;
+    }
+
     .split-content {
         flex-direction:column-reverse;
         padding-top: 150px
