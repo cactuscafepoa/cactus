@@ -270,10 +270,6 @@ p {
         padding-left: 20px;
         padding-right: 20px
     }
-
-    .title-large {
-        font-size: 1.2rem;
-    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -2222,6 +2218,7 @@ nav .navigation__itens__cms a:hover img {
 
     .title-large {
         font-size: 1.2rem;
+        text-align: initial;
     }
 }
 
