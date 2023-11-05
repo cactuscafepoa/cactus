@@ -272,7 +272,7 @@ p {
     }
 
     .title-large {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -2218,6 +2218,10 @@ nav .navigation__itens__cms a:hover img {
 
     .about__img__values {
         padding: 250px 0 100px 50px
+    }
+
+    .title-large {
+        font-size: 1.2rem;
     }
 }
 
