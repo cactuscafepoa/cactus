@@ -1595,7 +1595,7 @@ nav .navigation__itens__cms a:hover img {
     -o-transition: ease-in 150ms;
     transition: ease-in 150ms;
     display: flex;
-    height: 320px
+    height: 336px
 }
 
 .card__product:last-child {
