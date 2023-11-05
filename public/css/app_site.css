@@ -270,6 +270,10 @@ p {
         padding-left: 20px;
         padding-right: 20px
     }
+
+    .title-large {
+        font-size: 1.4rem;
+    }
 }
 
 @media only screen and (max-width: 768px) {

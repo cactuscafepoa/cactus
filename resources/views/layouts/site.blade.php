@@ -52,7 +52,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="flex-container" style="float:left;">
             <a href="{{route('site.home')}}">
                 <!--<img src="{{URL::asset('images/logo.svg')}}">-->
-                <img style="max-width: 70%;margin-top: 10px;" src="{{URL::asset('images/so_cactus_verde.png')}}">
+                <img style="max-width:100%;margin-top:14px;" src="{{URL::asset('images/logo_menu.png')}}">
             </a>
         </div>
 
@@ -158,7 +158,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <section class="sub__footer" style="padding: 15px 0px 0px 0px;">
     <div class="main-wrapper flex-container">
         <a href="{{route('dashboard')}}" target="_blank"><img src="{{URL::asset('images/Lock-icon.svg')}}"></a>
-        <p style='font-size:0.9rem;'>Rua Felipe Neri, 461 Loja 101 - Bairro Auxiliadora, Porto Alegre - RS, 90.440-150.</p>
+        <p style='font-size:0.9rem;'>Rua Felipe Neri, 461 Loja 101 - Bairro Auxiliadora, Porto Alegre - RS, CEP 90.440-150.</p>
         <div>
             <!--<a href="http://mmpx.com.br/" target="_blank">Deisgn by <strong>MMPX</strong></a>-->
             <p style='font-size: 0.8rem;'>&copy; Copyright Cactus Café Poa 2023</p>
