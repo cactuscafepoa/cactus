@@ -1805,7 +1805,7 @@ nav .navigation__itens__cms a:hover img {
 }
 @media only screen and (max-width: 768px) {
     .novidade__label {
-        width:10%;
+        width:12%;
         position:absolute;
         top:8px;
         left:54px;
@@ -1817,7 +1817,7 @@ nav .navigation__itens__cms a:hover img {
     position:absolute;
     top:10px;
     left:130px;
-    margin-left:20px;
+    margin-left:26px;
 }
 @media only screen and (max-width: 768px) {
     .midia_social {
@@ -1825,7 +1825,7 @@ nav .navigation__itens__cms a:hover img {
         position:absolute;
         top:10px;
         left:70px;
-        margin-left:20px;
+        margin-left:26px;
     }
 }
 
