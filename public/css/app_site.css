@@ -273,7 +273,7 @@ p {
 }
 
 @media only screen and (max-width: 768px) {
-    .header-wrapper h1 {
+    .header-wrapper {
         text-align:center
     }
 }
@@ -2222,15 +2222,6 @@ nav .navigation__itens__cms a:hover img {
 }
 
 @media only screen and (max-width: 768px) {
-
-    .font-celular {
-        font-size: 1rem;
-    }
-
-    .title-large {
-        text-align:left;
-    }
-
     .split-content {
         flex-direction:column-reverse;
         padding-top: 150px
@@ -2352,6 +2343,16 @@ nav .navigation__itens__cms a:hover img {
 }
 
 @media only screen and (max-width: 768px) {
+
+    /*AQUI FONTE CELULAR*/
+    .font-celular {
+        font-size: 1rem;
+    }
+
+    .title-large {
+        text-align:left;
+    }
+
     .contact__block {
         padding:120px 0 100px 0
     }
