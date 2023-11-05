@@ -18,7 +18,7 @@
 				<section class="contact__options" style="grid-template-columns: initial;max-width: 1040px;">
 					<div class="contact__infos" style="padding:4px;font-size:14px;">
 						<ul class="list-group">
-							<li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white" style="height:48px;padding:2px;">
+							<li class="list-group-item d-flex justify-content-between align-items-center bg-secondary text-white font_celular" style="height:48px;padding:2px;">
 								<span class="d-flex" style='width:15%;'>
 									Dia
 								</span>
@@ -33,7 +33,7 @@
 								</span>
 							</li>
 							@foreach ($dataset as $horario)
-							<li class="list-group-item d-flex justify-content-between align-items-center" style="padding:2px;">
+							<li class="list-group-item d-flex justify-content-between align-items-center font_celular" style="padding:2px;">
 								<span class="d-flex" style='width:15%;'>
 									{{ $horario->dia_semana}}
 								</span>
