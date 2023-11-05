@@ -712,7 +712,7 @@ textarea {
     max-width: 40px;
     height: 4px;
     appearance: none;
-    background: #337ecc;
+    background: #31a575;
     border: none
 }
 
@@ -1738,6 +1738,34 @@ nav .navigation__itens__cms a:hover img {
     content: url(../images/collapse-open.svg)
 }
 
+.produto-celular-titulo-imagem {
+    width: 100%;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-decoration:none;
+    margin-top: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .produto-celular-titulo-imagem {
+        margin-top:20px;
+        display:grid;
+        grid-template-columns:repeat(1,1fr);
+    }
+
+}
+
+@media only screen and (max-width: 480px) {
+    .produto-celular-titulo-imagem {
+        margin-top:20px;
+        display:grid;
+        grid-template-columns:repeat(1,1fr);
+    }
+}
+
+
 .product .product__content {
     padding: 0 30px 30px 30px;
     border-top: solid 1px #eff2f5
@@ -1770,10 +1798,35 @@ nav .navigation__itens__cms a:hover img {
 }
 
 .novidade__label {
-    width: 8%;
+    width: 5%;
     position: absolute;
-    top: 5px;
+    top: 10px;
     left: 70px;
+}
+@media only screen and (max-width: 768px) {
+    .novidade__label {
+        width:10%;
+        position:absolute;
+        top:8px;
+        left:54px;
+    }
+}
+
+.midia_social {
+    width:5%;
+    position:absolute;
+    top:10px;
+    left:130px;
+    margin-left:20px;
+}
+@media only screen and (max-width: 768px) {
+    .midia_social {
+        width:10%;
+        position:absolute;
+        top:10px;
+        left:94px;
+        margin-left:20px;
+    }
 }
 
 @media only screen and (max-width: 992px) {

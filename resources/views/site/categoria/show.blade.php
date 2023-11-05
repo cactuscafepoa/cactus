@@ -10,7 +10,6 @@
                 <p style="text-align: initial;max-width:initial;font-weight: initial;">Em breve estará disponível novamente.</p>
             </section>
         </div>
-
 @else
 
 <style>
@@ -45,10 +44,10 @@
             </section>
         </aside>
         -->
-        <section class="products__list" style="margin-bottom:30px;">
-            <header>
+        <section class="products__list" style="margin-bottom:30px;margin-top: 50px;">
+            <!--<header>-->
                 <!--<h2 class="title-large">{{ $categoria[0]->CatNome }}</h2>-->
-            </header>
+            <!--</header>-->
 
             @foreach($categoria as $product)
                 @php
@@ -58,46 +57,52 @@
 
                     if ($product->ProdLink != "") {
                         if (strpos($product->ProdLink, "instagram") > 0)
-                            $linkImag = "<img class='novidade__label' src='/images/instagram.png' alt='Instagram' style='width:6%;position:absolute;top:14px;left:130px;margin-left: 10px'>";
+                            $linkImag = "<img class='midia_social' src='/images/instagram.gif' alt='Instagram'>";
                         elseif (strpos($product->ProdLink, "youtube") > 0)
-                            $linkImag = "<img class='novidade__label' src='/images/youtube.png' alt='YouTube' style='width:7%;position:absolute;top:10px;left:130px;margin-left: 10px'>";
+                            $linkImag = "<img class='midia_social' src='/images/youtube.gif'   alt='YouTube'>";
                         else
-                            $linkImag = "<img class='novidade__label' src='/images/midia_social_vazia.png' style='width:7%;position:absolute;top:10px;left:130px;margin-left: 10px'>";
+                            $linkImag = "<img class='midia_social' src='/images/midia_social_vazia.gif'>";
 
                         $link = $product->ProdLink;
                         $alvo = "target='_blank'";
                     }
                 @endphp
-                <article class="product">
-                    <a class="clickable-area" href="{{$link}}" {{$alvo}}>
-                        <header class="product__header">
-                            <h3 class="title-medium">{{$product->ProdNome}}</h3>
-                            <div class="card__cover">
-                                <span style="background-color:#31a575;color: #fff;border-radius: 4px;padding: 0 10px;font-size: 16px;position: absolute;top:-12px;font-weight: bold;text-align: right;">
-                                    R$ {{number_format($product->ProdPrecoVenda,2,',','.')}}
-                                </span>
-                                @if ($product->ProdDestaque == 1)
-                                    <img class="novidade__label" src="{{asset('images/label_novidade.png')}}" alt="Novidade">
-                                @endif
-                                <img src="{{ asset($product->ProdImagem) }}" style="width: 160px;">
-                            </div>
-                            <!-- Tooggle item -->
-                            <!--<span class="collapse__open"></span>-->
-                        </header>
-                        @if ($product->ProdEncomenda == 1)
-                            <img class="exclusive__label" src="{{asset('images/label_encomenda.png')}}" alt="Aceita encomenda">
 
+                <article class="product" style="margin-bottom:40px;">
+
+                    <div class="card__cover" style="text-align:right;margin-right:115px;">
+                        <span style="background-color:#31a575;color: #fff;border-radius: 4px;padding: 0 10px;font-size: 16px;position: absolute;top:-12px;font-weight: bold;text-align: right;">
+                            R$ {{number_format($product->ProdPrecoVenda,2,',','.')}}
+                        </span>
+                    </div>
+
+                    <section class="product__content" style="padding:0px 15px 0px 15px;">
+                        @if ($product->ProdEncomenda == 1)
+                            <img class="exclusive__label" src="{{asset('images/label_encomenda.png')}}" alt="Aceitamos encomenda">
+                        @endif
+                        @if ($product->ProdDestaque == 1)
+                            <img class="novidade__label" src="{{asset('images/label_novidade.gif')}}" alt="Novidade">
                         @endif
                         @php
                             echo $linkImag;
                         @endphp
+                    </section>
+
+                    <a class="produto-celular-titulo-imagem" href="{{$link}}" {{$alvo}}>
+                        <div style="text-align:center;">
+                            <h3 class="title-medium">{{$product->ProdNome}}</h3>
+                        </div>
+                        <div style="text-align:center;">
+                            <img src="{{ asset($product->ProdImagem) }}" style="width: 160px;">
+                        </div>
                     </a>
-                    <section class="product__content">
+                    <section class="product__content" style="padding:0px 15px 0px 15px;">
                         <div class="product__desciption">
                             {{$product->ProdDescricao}}
                         </div>
                     </section>
                 </article>
+
             @endforeach
         </section>
         <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large" style="margin-left:20px;margin-bottom:48px;">Voltar</a>
