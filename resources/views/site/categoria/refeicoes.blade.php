@@ -10,12 +10,16 @@
 
 @if ($configuracao[0]->prato_dia == 1)
 
-    <div class="gray-background" style="padding-bottom:2px;">
-        <section class="main-wrapper" style="padding: 0px;">
-            <h2 style="font-size: 1.4rem;color: #8a99a8;">{{$configuracao[0]->prato_dia_texto_titulo}}</h2>
-            <p style="text-align: initial;max-width:initial;font-weight: initial;">{{$configuracao[0]->prato_dia_texto;}}</p>
-        </section>
-    </div>
+    @if ( (!is_null($configuracao[0]->prato_dia_texto_titulo) && $configuracao[0]->prato_dia_texto_titulo != "") ||
+          (!is_null($configuracao[0]->prato_dia_texto) && $configuracao[0]->prato_dia_texto != "")
+        )
+        <div class="gray-background" style="padding-bottom:2px;">
+            <section class="main-wrapper" style="padding: 0px;">
+                <h2 style="font-size: 1.4rem;color: #8a99a8;">{{$configuracao[0]->prato_dia_texto_titulo}}</h2>
+                <p style="text-align: initial;max-width:initial;font-weight: initial;">{{$configuracao[0]->prato_dia_texto;}}</p>
+            </section>
+        </div>
+    @endif
 
     <div class="products__general main-wrapper" style="margin-top: 32px;">
 
