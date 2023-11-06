@@ -1745,12 +1745,12 @@ nav .navigation__itens__cms a:hover img {
     justify-content: space-between;
     align-items: center;
     text-decoration:none;
-    margin-top: 10px;
+    margin-top:2rem;
 }
 
 @media only screen and (max-width: 768px) {
     .produto-celular-titulo-imagem {
-        margin-top:20px;
+        margin-top:3rem;
         display:grid;
         grid-template-columns:repeat(1,1fr);
     }
@@ -1759,7 +1759,7 @@ nav .navigation__itens__cms a:hover img {
 
 @media only screen and (max-width: 480px) {
     .produto-celular-titulo-imagem {
-        margin-top:20px;
+        margin-top:3rem;
         display:grid;
         grid-template-columns:repeat(1,1fr);
     }
