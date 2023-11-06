@@ -23,7 +23,7 @@
 
     <div class="products__general main-wrapper" style="margin-top: 32px;">
 
-        <section class="products__list" style="width:100%;max-width: initial;">
+        <section class="products__list" style="width:100%;max-width:initial;margin-bottom:initial;">
 
             @foreach($produto as $product)
             @php
@@ -91,9 +91,7 @@
         </section>
     </div>
 @endif
-
     <section class="products__cultivation__category main-wrapper" style="padding:0px 0px 10px 0px;display: flex;">
-        <a href="{{route('site.home')}}" role="button" class="button button_accent button_large">Voltar</a>
+        <a href="{{route('site.home')}}" role="button" class="button button_accent button_large" style="margin-left: 20px;">Voltar</a>
     </section>
-
 @endsection
