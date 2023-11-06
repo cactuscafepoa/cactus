@@ -12,8 +12,8 @@
 
     <div class="gray-background" style="padding:20px;">
         <section class="contact__block contact-wrapper" style="padding: 0px;">
-            <h2 style="font-size: 1.4rem;color: #8a99a8;">Nosso serviço de encomendas está temporariamente suspenso.</h2>
-            <p style="text-align: initial;max-width:initial;font-weight: initial;">Em breve estará disponível novamente.</p>
+            <h2 style="font-size: 1.4rem;color: #8a99a8;">Nosso serviço de encomendas está sendo estruturado.</h2>
+            <p style="text-align: initial;max-width:initial;font-weight: initial;">Em breve estará disponível.</p>
         </section>
     </div>
 
