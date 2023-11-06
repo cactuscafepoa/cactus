@@ -45,13 +45,11 @@
                 @endphp
 
                 <article class="product">
-
                     <div class="card__cover" style="text-align:right;margin-right:115px;">
                         <span style="background-color:#31a575;color: #fff;border-radius: 4px;padding: 0 10px;font-size: 16px;position: absolute;top:-12px;font-weight: bold;text-align: right;">
                             R$ {{number_format($product->ProdPrecoVenda,2,',','.')}}
                         </span>
                     </div>
-
                     <section class="product__content" style="padding:0px 15px 0px 15px;">
                         @if ($product->ProdEncomenda == 1)
                             <img class="exclusive__label" src="{{asset('images/label_encomenda.png')}}" alt="Aceitamos encomenda">
@@ -77,9 +75,7 @@
                             {{$product->ProdDescricao}}
                         </div>
                     </section>
-
-                    </article>
-
+                </article>
             @endforeach
         </section>
     </div>
