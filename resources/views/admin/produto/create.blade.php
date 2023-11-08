@@ -139,7 +139,7 @@ Adicionar Produto
                 </label>
             </span>
             <span style="width:80%;">
-                <label for="destaque_texto">Descrição para destaque/novidade</label>
+                <label for="destaque_texto">Descrição para destaque/novidade (acrescenta este texto na descrição do produto)</label>
                 <input type="text" class="form-control" name="destaque_texto" id="destaque_texto" value="{{old('destaque_texto')}}">
             </span>
         </div>

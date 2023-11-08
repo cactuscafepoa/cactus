@@ -11,10 +11,13 @@
 @if ($configuracao[0]->encomendas == 0)
 
     <div class="gray-background" style="padding:20px;">
-        <section class="contact__block contact-wrapper" style="padding: 0px;">
+        <section class="contact__block contact-wrapper" style="padding:0px;margin-bottom:40px;">
             <h2 style="font-size: 1.4rem;color: #8a99a8;">Nosso serviço de encomendas está sendo estruturado.</h2>
             <p style="text-align: initial;max-width:initial;font-weight: initial;">Em breve estará disponível.</p>
         </section>
+        <section class="products__cultivation__category main-wrapper" style="padding:0px 0px 10px 0px;display: flex;">
+            <a href="{{route('site.home')}}" role="button" class="button button_accent button_large">Voltar</a>
+    </section>
     </div>
 
 @else
