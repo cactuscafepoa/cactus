@@ -110,6 +110,7 @@ class CategoriaController extends Controller
         /*->where('categorias.visivel', '=', '1')*/
         /*->where('produtos.visivel', '=',  '1')*/
         ->where('produtos.encomenda', '=',  '1')
+        ->orderBy('categorias.nome', 'asc')
         ->orderBy('produtos.nome', 'asc')
         ->get();  //dd($dataset);  exit;   //var_dump($dataset); exit;
 

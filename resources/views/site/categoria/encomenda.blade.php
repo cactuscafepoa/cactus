@@ -49,83 +49,87 @@
             $catIdAnterior = $categ->CatId;
         @endphp
 
-        <div class="products__general main-wrapper" style="margin-top: initial;">
-            <aside class="product__selected" style="margin-bottom: 10px;">
-                <article class="card__product" style="margin-top: 101px;">
-                    <a> <!--href="products-detail.php"-->
+        <div class="products__general main-wrapper" style="display:block;text-align:center;margin-top: initial;">
+
+            <article class="card__product" style="background-color:#f5f7f9;margin-top:30px;">
+                <!--<a> href="products-detail.php"-->
+                    <div style="width:100%;text-align:center;">
                         <div class="card__cover">
                             <img src="{{asset($categ->CatImagem)}}" style="width: 222px;">
                         </div>
-                        <header class="card__product-header">
+                        <div style="margin-top:20px;">
                             <h2 class="title-medium">{{ $categ->CatNome }}</h2>
                             <!--<p style="color: #8a99a8;">{{ $categoria[0]->CatDescricao }}</p>-->
-                        </header>
-                    </a>
-                </article>
-            </aside>
+                        </div>
+                    </div>
+                <!--</a>-->
+            </article>
 
-            <section class="products__list">
-                <header>
-                    <!--<h2 class="title-large">{{ $categoria[0]->CatNome }}</h2>-->
-                </header>
-
+            <section class="products__list" style="max-width:initial;margin-left:initial;margin-top:30px;">
                 <!-- PRODUTOS -->
                 @foreach($categoria as $product)
-
-                    @php
+                @php
                     $link = "javascript:;";
                     $linkImag = "";
                     $alvo = "";
 
                     if ($product->ProdLink != "") {
                         if (strpos($product->ProdLink, "instagram") > 0)
-                            $linkImag = "<img class='novidade__label' src='/images/instagram.gif' alt='Instagram' style='width:6%;position:absolute;top:14px;left:130px;margin-left: 10px'>";
+                            $linkImag = "<img class='midia_social' src='/images/instagram.gif' alt='Instagram'>";
                         elseif (strpos($product->ProdLink, "youtube") > 0)
-                            $linkImag = "<img class='novidade__label' src='/images/youtube.gif' alt='YouTube' style='width:7%;position:absolute;top:10px;left:130px;margin-left: 10px'>";
+                            $linkImag = "<img class='midia_social' src='/images/youtube.gif'   alt='YouTube'>";
                         else
-                            $linkImag = "<img class='novidade__label' src='/images/midia_social_vazia.gif' style='width:7%;position:absolute;top:10px;left:130px;margin-left: 10px'>";
+                            $linkImag = "<img class='midia_social' src='/images/midia_social_vazia.gif'>";
 
                         $link = $product->ProdLink;
                         $alvo = "target='_blank'";
                     }
-                    @endphp
+                @endphp
 
                     @if ($categ->CatId == $product->ProdCatId)
 
-                        <article class="product">
-                            <a class="clickable-area" href="{{$link}}" {{$alvo}}>
-                                <header class="product__header">
-                                    <h3 class="title-medium">{{$product->ProdNome}}</h3>
-                                    <div class="card__cover">
-                                        @php
-                                        //dd($product->ProdEncomendaPrecoVenda);
-                                        if ($product->ProdEncomendaPrecoVenda == "0.00" || is_null($product->ProdEncomendaPrecoVenda) )
-                                            $valorProduto = number_format($product->ProdPrecoVenda,2,',','.');
-                                        else
-                                            $valorProduto = number_format($product->ProdEncomendaPrecoVenda,2,',','.');
-                                        @endphp
-                                        <span style="background-color:#31a575;color: #fff;border-radius: 4px;padding: 0 10px;font-size: 16px;position: absolute;top: -12px;font-weight: bold;text-align: right;">
-                                            R$ {{$valorProduto}}
-                                        </span>
-                                        @if ($product->ProdDestaque == 1)
-                                            <img class="novidade__label" src="{{asset('images/label_novidade.gif')}}" alt="Novidade">
-                                        @endif
-                                        <img src="{{ asset($product->ProdImagem) }}" style="width: 160px;">
-                                    </div>
-                                    <!-- Tooggle item -->
-                                    <!--<span class="collapse__open"></span>-->
-                                </header>
-                                @if ($product->ProdEncomenda == 1)
-                                    <img class="exclusive__label" src="{{asset('images/label_encomenda.png')}}" alt="Aceita encomenda">
+                        <!--<article class="product">-->
+                        <article class="product" style="margin-bottom:40px;">
+                            <div class="card__cover" style="text-align:right;margin-right:115px;">
+                                @php
+                                if ($product->ProdEncomendaPrecoVenda == "0.00" || is_null($product->ProdEncomendaPrecoVenda) )
+                                    $valorProduto = number_format($product->ProdPrecoVenda,2,',','.');
+                                else
+                                    $valorProduto = number_format($product->ProdEncomendaPrecoVenda,2,',','.');
+                                @endphp
+                                <span style="background-color:#31a575;color: #fff;border-radius: 4px;padding: 0 10px;font-size: 16px;position: absolute;top: -12px;font-weight: bold;text-align: right;">
+                                    R$ {{$valorProduto}}
+                                </span>
+                            </div>
+                            <section class="product__content" style="padding:0px 15px 0px 15px;">
+                                @if ($product->ProdDestaque == 1)
+                                    <img class="novidade__label" src="{{asset('images/label_novidade.gif')}}" alt="Novidade">
                                 @endif
                                 @php
                                     echo $linkImag;
                                 @endphp
+                            </section>
+
+                            <a class="produto-celular-titulo-imagem" href="{{$link}}" {{$alvo}}>
+                                <div style="text-align:center;">
+                                    <h3 class="title-medium">{{$product->ProdNome}}</h3>
+                                </div>
+                                <div style="text-align:center;">
+                                    <img src="{{ asset($product->ProdImagem) }}" style="width: 160px;">
+                                </div>
                             </a>
-                            <section class="product__content">
-                                <div class="product__desciption">
-                                    {{$product->ProdEncQtdMin}}<br>
-                                    {{$product->ProdEncPrazoMin}}
+                            <section class="product__content" style="text-align:initial;">
+                                <div class="product__desciption" style="margin-top:10px;">
+                                    {{$product->ProdDescricao}}
+                                    @php
+                                        if ( (!is_null($product->ProdEncQtdMin) && $product->ProdEncQtdMin != "") ||
+                                             (!is_null($product->ProdEncPrazoMin) && $product->ProdEncPrazoMin != "") ) {
+                                            echo "<br><hr style='color:#d1d9e0;'>";
+                                                echo $product->ProdEncQtdMin;
+                                                echo "<br>";
+                                                echo $product->ProdEncPrazoMin;
+                                        }
+                                    @endphp
                                 </div>
                             </section>
 
@@ -134,11 +138,6 @@
                 @endforeach
             </section>
         </div>
-
-        @if ($contador < $total )
-            <div style="width:100%;height:1px;background-color:#d1d9e0;margin-top: initial;"></div>
-        @endif
-
     @endforeach
 
     <section class="products__cultivation__category main-wrapper" style="padding:20px 0px 10px 0px;display: flex;">

@@ -220,6 +220,18 @@
                 </a>
             </article>
 
+            <article class="card__post" style="height:initial;margin-top:15px;">
+                <a href="javascript:;">
+                    <div class="post__cover" style="max-height: initial;overflow: initial;">
+                        <img src="{{asset('images/depoimentos/mara.png')}}">
+                    </div>
+                    <header class="card__post__header" style="padding: 0px 0px 0px 10px;">
+                        <time class="post__date" style="position: initial;" datetime="2019-03-29">Mara</time>
+                        <!--<h3 class="body-large">Castus danista vix examinares cursus est. </h3>-->
+                    </header>
+                </a>
+            </article>
+
 
         </div>
     </div>
