@@ -57,21 +57,21 @@
 					</tr>
 					<tr>
 						<td style="width:25%;height:16px;">
-							<strong>Valor venda:</strong> {{ number_format($item->ProdPrecoVenda,2,",","."); }}
+							<strong>Preço venda:</strong> {{ number_format($item->ProdPrecoVenda,2,",","."); }}
 						</td>
 						<td style="width:25%;height:16px;">
-							<strong>Valor compra:</strong> {{ number_format($item->ProdPrecoCompra,2,",","."); }}
+							<strong>Preço compra:</strong> {{ number_format($item->ProdPrecoCompra,2,",","."); }}
 						</td>
 						<td style="width:50%;height:16px;">
-							<strong>Prato do Dia:</strong> {{($item->ProdPratoDia == '0') ? 'Nâo' : 'Sim'}}
+							<strong>Prato do dia:</strong> {{($item->ProdPratoDia == '0') ? 'Nâo' : 'Sim'}}
 						</td>
 					</tr>
 					<tr>
 						<td style="width:50%;height:16px;">
-							<strong>Visível no Site:</strong> {{($item->ProdVisivel == '0') ? 'Nâo' : 'Sim'}}
+							<strong>Visível no site:</strong> {{($item->ProdVisivel == '0') ? 'Nâo' : 'Sim'}}
 						</td>
 						<td style="width:50%;height:16px;" colspan="2">
-							<strong>Visível Cardápio Físico:</strong> {{($item->ProdVisivelCardFisico == '0') ? 'Nâo' : 'Sim'}}
+							<strong>Visível cardápio físico:</strong> {{($item->ProdVisivelCardFisico == '0') ? 'Nâo' : 'Sim'}}
 						</td>
 					</tr>
 					<tr>
@@ -79,7 +79,7 @@
 							<strong>Encomenda:</strong> {{($item->ProdEncomenda == '0') ? 'Nâo' : 'Sim'}}
 						</td>
 						<td style="width:50%;height:16px;">
-							<strong>Preco para encomenda:</strong> {{ number_format($item->ProdEncomendaPrecVenda,2,",",".") }}
+							<strong>Preço encomenda:</strong> {{ number_format($item->ProdEncomendaPrecVenda,2,",",".") }}
 						</td>
 					</tr>
 					<tr>
