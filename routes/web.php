@@ -94,6 +94,7 @@ Route::post('fornecedores/atualizar'    , [FornecedorController::class, 'update'
 
 // PRODUTOS
 Route::get('produtos'               , [ProdutoController::class, 'index'  ])->middleware('auth')->name('listar_produtos');
+Route::post('produtos'              , [ProdutoController::class, 'index'  ])->middleware('auth')->name('listar_produtos_pesquisa');
 Route::get('produtos/criar'         , [ProdutoController::class, 'create' ])->middleware('auth')->name('form_edit_produto_new');
 Route::post('produtos/criar'        , [ProdutoController::class, 'store'  ])->middleware('auth')->name('form_create_produto');
 Route::get('produtos/remover'       , [ProdutoController::class, 'destroy'])->middleware('auth')->name('form_remover_produto');

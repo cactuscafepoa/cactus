@@ -85,7 +85,7 @@ class CategoriaController extends Controller
         ->get();  //dd($dataset);  exit;
         //var_dump($dataset); exit;
 
-        return view('site.categoria.show', [
+        return view('site.categoria.cardapio', [
             'categoria' => $dataset,
             'configuracao' => Configuracao::all('cardapio'),
         ]);

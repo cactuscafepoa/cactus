@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Storage;
 class CategoriaAdmController extends Controller {
 
 	public function index(Request $request) {
-		
+
 		$dataset = Categoria::query()->orderBy('nome')->get();
 		$mensagem = $request->session()->get('mensagem');
 		$mensagemValidaRelacao = $request->session()->get('mensagemValidaRelacao');
@@ -22,12 +22,12 @@ class CategoriaAdmController extends Controller {
 	}
 
 	public function create(Request $request)
-	{		
+	{
 		return view('admin.categoria.create');
 	}
 
 	public function store(CategoriaFormRequest $request)
-	{	
+	{
 		$input = $request->all();
 
 		if ($request->visivel== 'on')
@@ -67,6 +67,8 @@ class CategoriaAdmController extends Controller {
 
 		if ($request->visivel == 'on') $request->visivel = 1; else $request->visivel = 0;
 
+		$slug = Str::of($request->nome)->slug('-'); //dd($slug);
+
 		if ($request->file('imagem')) {
 			$path = $request->file('imagem')->store('public/images');
 			$imagem = Str::of($path)->after('public/images/');
@@ -75,6 +77,7 @@ class CategoriaAdmController extends Controller {
 			->where('id', $request->id)
 			->update([
 				'nome' 			=> $request->nome,
+				'slug'          => $slug,
 				'descricao'		=> $request->descricao,
 				'imagem'		=> $imagem,
 				'visivel'		=> $request->visivel,
@@ -88,6 +91,7 @@ class CategoriaAdmController extends Controller {
 			->where('id', $request->id)
 			->update([
 				'nome' 			=> $request->nome,
+				'slug'          => $slug,
 				'descricao'		=> $request->descricao,
 				'imagem'		=> env('IMAGEM_DEFAULT'),
 				'visivel'		=> $request->visivel,
@@ -103,6 +107,7 @@ class CategoriaAdmController extends Controller {
 			->where('id', $request->id)
 			->update([
 				'nome' 			=> $request->nome,
+				'slug'          => $slug,
 				'descricao'		=> $request->descricao,
 				'visivel'		=> $request->visivel,
 			]);
@@ -134,6 +139,7 @@ class CategoriaAdmController extends Controller {
 
 	protected static function booted()
     {
+		dd("Contate o administrador do sistema. Categoria function.");
         $dataset->slug = Str::slug($dataset->nome);
     }
 }

@@ -13,35 +13,94 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use PDF;
+Use Redirect;
 
 use Dompdf\Dompdf;
 use Dompdf\Options;
 
-
 class ProdutoController extends Controller {
 
 	public function index(Request $request) {
-		/*$dataset = Produto::with('categoria')
-		->orderBy('produtos.nome')
-		->get();  //dd($dataset);*/
-
-        $dataset = DB::table('categorias')
-        ->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
-        ->select(  'categorias.nome AS CatNome',
-				   'produtos.id AS ProdId',
-                   'produtos.nome AS ProdNome',
-                   'produtos.preco_venda AS ProdPrecoVenda',
-				   'produtos.visivel AS ProdVisivel',
-				   'produtos.destaque AS ProdDestaque',
-				   'produtos.prato_dia AS ProdPratoDia',
-                   'produtos.encomenda AS ProdEncomenda',
-				   'produtos.visivel_cardapio_fisico AS ProdVisivelCardapioFisico',)
-		->orderBy('categorias.nome', 'asc')
-        ->orderBy('produtos.nome', 'asc')
-        ->get();  //dd($dataset);  exit;
+		//dd($request);
+		if (!is_null($request->categoria_id_pesq) && !is_null($request->nome_pesq)) {
+			$dataset = DB::table('categorias')
+			->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+			->select(  'categorias.nome AS CatNome',
+					'produtos.id AS ProdId',
+					'produtos.nome AS ProdNome',
+					'produtos.preco_venda AS ProdPrecoVenda',
+					'produtos.visivel AS ProdVisivel',
+					'produtos.destaque AS ProdDestaque',
+					'produtos.prato_dia AS ProdPratoDia',
+					'produtos.encomenda AS ProdEncomenda',
+					'produtos.visivel_cardapio_fisico AS ProdVisivelCardapioFisico',)
+			->where('produtos.categoria_id',$request->categoria_id_pesq)
+			->where('produtos.nome','like',$request->nome_pesq."%")
+			->orderBy('categorias.nome', 'asc')
+			->orderBy('produtos.nome', 'asc')
+			->get();  //dd($dataset);
+		}
+		elseif (!is_null($request->categoria_id_pesq)) {
+			$dataset = DB::table('categorias')
+			->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+			->select(  'categorias.nome AS CatNome',
+					'produtos.id AS ProdId',
+					'produtos.nome AS ProdNome',
+					'produtos.preco_venda AS ProdPrecoVenda',
+					'produtos.visivel AS ProdVisivel',
+					'produtos.destaque AS ProdDestaque',
+					'produtos.prato_dia AS ProdPratoDia',
+					'produtos.encomenda AS ProdEncomenda',
+					'produtos.visivel_cardapio_fisico AS ProdVisivelCardapioFisico',)
+			->where('produtos.categoria_id',$request->categoria_id_pesq)
+			->orderBy('categorias.nome', 'asc')
+			->orderBy('produtos.nome', 'asc')
+			->get();  //dd($dataset);
+		}
+		elseif (!is_null($request->nome_pesq)) {
+			$dataset = DB::table('categorias')
+			->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+			->select(  'categorias.nome AS CatNome',
+					'produtos.id AS ProdId',
+					'produtos.nome AS ProdNome',
+					'produtos.preco_venda AS ProdPrecoVenda',
+					'produtos.visivel AS ProdVisivel',
+					'produtos.destaque AS ProdDestaque',
+					'produtos.prato_dia AS ProdPratoDia',
+					'produtos.encomenda AS ProdEncomenda',
+					'produtos.visivel_cardapio_fisico AS ProdVisivelCardapioFisico',)
+			->where('produtos.nome','like',$request->nome_pesq."%")
+			->orderBy('categorias.nome', 'asc')
+			->orderBy('produtos.nome', 'asc')
+			->get();  //dd($dataset);
+		}
+		else {
+			$dataset = DB::table('categorias')
+			->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+			->select(  'categorias.nome AS CatNome',
+					'produtos.id AS ProdId',
+					'produtos.nome AS ProdNome',
+					'produtos.preco_venda AS ProdPrecoVenda',
+					'produtos.visivel AS ProdVisivel',
+					'produtos.destaque AS ProdDestaque',
+					'produtos.prato_dia AS ProdPratoDia',
+					'produtos.encomenda AS ProdEncomenda',
+					'produtos.visivel_cardapio_fisico AS ProdVisivelCardapioFisico',)
+			->orderBy('categorias.nome', 'asc')
+			->orderBy('produtos.nome', 'asc')
+			->get(); //dd($dataset);
+		}
 
 		$mensagem = $request->session()->get('mensagem');
-		return view('admin.produto.index', compact('dataset', 'mensagem'));
+		//return view('admin.produto.index', compact('dataset', 'mensagem'));
+		return view('admin.produto.index', [
+			'categoria_id_pesq' => $request->categoria_id_pesq,
+			'nome_pesq' => $request->nome_pesq,
+        	'dataset'    => $dataset,
+			'mensagem'   => $mensagem,
+			'categorias' => Categoria::all('id','nome')->sortBy('nome'),
+			/*'fornecedores' => Fornecedor::all('id','nome')->sortBy('nome'),*/
+        ]);
 	}
 
 	public function create(Request $request)
@@ -53,9 +112,31 @@ class ProdutoController extends Controller {
 	}
 
 	public function store(ProdutoFormRequest $request)
-	{	//ddd($request->preco); exit;
+	{
+
+		////////////////////////////////////////////////////////////////////////
+		$request->preco_venda = preg_replace('/[^0-9]/', '', $request->preco_venda);   //dd($request->preco_venda);
+
+		if (strlen($request->preco_venda) == 0) {  // CAMPO OBRIGATÓRIO OU NÚMERO INVÁLIDO
+			return Redirect::back()->withErrors(['mensagem' => "Preço de venda do produto é obrigatório ou possui valor inválido."]);
+		}
+		elseif (strlen($request->preco_venda) >= 3) {
+			if ((int)$request->preco_venda > 0)
+				$request->preco_venda = substr_replace($request->preco_venda, '.', -2, 0);
+			else
+				return Redirect::back()->withErrors(['mensagem' => "Preço de venda do produto é obrigatório ou possui valor inválido."]);
+		}
+		elseif (strlen($request->preco_venda) == 1) {
+			$request->preco_venda = "0.0" . $request->preco_venda;
+		}
+		elseif (strlen($request->preco_venda) == 2) {
+			$request->preco_venda = "0." . $request->preco_venda;
+		}  //dd($request->preco_venda);
+		////////////////////////////////////////////////////////////////////////
 
 		$input = $request->all();
+
+		$input['preco_venda'] = $request->preco_venda;
 
 		if ($request->visivel == 'on') $input['visivel'] = 1; else $input['visivel'] = 0;
 		if ($request->encomenda == 'on') $input['encomenda'] = 1; else $input['encomenda'] = 0;
@@ -71,13 +152,14 @@ class ProdutoController extends Controller {
 			$input['preco'] = '0.00';
 		}
 
-		if (!empty($request->preco_venda)) {
+		/*if (!empty($request->preco_venda)) {
+			//dd($request->preco_venda);
 			$input['preco_venda'] = str_replace(".","",$input['preco_venda']);
 			$input['preco_venda'] = str_replace(",",".",$input['preco_venda']);
 		}
 		else {
 			$input['preco_venda'] = '0.00';
-		}
+		}*/
 
 		if (!empty($request->encomenda_preco_venda)) {
 			$input['encomenda_preco_venda'] = str_replace(".","",$input['encomenda_preco_venda']);
@@ -120,164 +202,185 @@ class ProdutoController extends Controller {
     public function update(ProdutoFormRequest $request, Produto $produto)
 	{   //dd($request->preco_venda);
 
-		if ($request->visivel == 'on') $request->visivel = 1; else $request->visivel = 0;
-		if ($request->encomenda == 'on') $request->encomenda = 1; else $request->encomenda = 0;
-		if ($request->destaque == 'on') $request->destaque = 1; else $request->destaque = 0;
-		if ($request->prato_dia == 'on') $request->prato_dia = 1; else $request->prato_dia = 0;
-		if ($request->visivel_cardapio_fisico == 'on') $request->visivel_cardapio_fisico = 1; else $request->visivel_cardapio_fisico = 0;
+			// PREÇO VENDA - FORMATAÇÃO
+			$request->preco_venda = preg_replace('/[^0-9]/', '', $request->preco_venda);   //dd($request->preco_venda);
 
-		if (!empty($request->preco)) {
-			$request->preco = str_replace(".","",$request->preco);
-			$request->preco = str_replace(",",".",$request->preco);
-		}
-		else {
-			$request->preco = '0.00';
-		}
-
-		if (!empty($request->preco_venda)) {
-			$request->preco_venda = str_replace(".","",$request->preco_venda);
-			$request->preco_venda = str_replace(",",".",$request->preco_venda);
-		}
-		else {
-			$request->preco_venda = '0.00';
-		}
-
-		if (!empty($request->encomenda_preco_venda)) {
-			$request->encomenda_preco_venda = str_replace(".","",$request->encomenda_preco_venda);
-			$request->encomenda_preco_venda = str_replace(",",".",$request->encomenda_preco_venda);
-		}
-		else {
-			$request->encomenda_preco_venda = '0.00';
-		}
-
-		if ($request->file('imagem')) {
-			$path = $request->file('imagem')->store('public/images');
-			$imagem = Str::of($path)->after('public/images/');   //dd($imagem);
-
-			$dataset = DB::table('produtos')
-			->where('id', $request->id)
-			->update([
-				'categoria_id'	=> $request->categoria_id,
-				'nome' 			=> $request->nome,
-				'descricao'		=> $request->descricao,
-				'marca'			=> $request->marca,
-				'volume'		=> $request->volume,
-				'tipo_volume'	=> $request->tipo_volume,
-				'ncm'			=> $request->ncm,
-				'preco'			=> $request->preco,
-				'preco_venda'	=> $request->preco_venda,
-				'quantidade'	=> $request->quantidade,
-				'fornecedor_id'	=> $request->fornecedor_id,
-				'imagem'		=> $imagem,
-				'link' 		    => $request->link,
-				'destaque'		=> $request->destaque,
-				'destaque_texto'=> $request->destaque_texto,
-				'encomenda'		=> $request->encomenda,
-				'encomenda_preco_venda'	=> $request->encomenda_preco_venda,
-				'encomenda_quantidade_minima'	=> $request->encomenda_quantidade_minima,
-				'encomenda_prazo_minimo'		=> $request->encomenda_prazo_minimo,
-				'prato_dia'						=> $request->prato_dia,
-				'visivel'						=> $request->visivel,
-				'visivel_cardapio_fisico'		=> $request->visivel_cardapio_fisico,
-
-			]);
-		}
-		elseif ($request->remove_imagem) {
-
-			$imagem = Produto::select('imagem')->where('id',$request->id)->get(); //dd($imagem);
-			$imagemOriginal = $imagem[0]->getRawOriginal('imagem');
-			$dataset = DB::table('produtos')
-			->where('id', $request->id)
-			->update([
-				'categoria_id'	=> $request->categoria_id,
-				'nome' 			=> $request->nome,
-				'descricao'		=> $request->descricao,
-				'marca'			=> $request->marca,
-				'volume'		=> $request->volume,
-				'tipo_volume'	=> $request->tipo_volume,
-				'ncm'			=> $request->ncm,
-				'preco'			=> $request->preco,
-				'preco_venda'	=> $request->preco_venda,
-				'quantidade'	=> $request->quantidade,
-				'fornecedor_id'	=> $request->fornecedor_id,
-				'imagem'		=> env('IMAGEM_DEFAULT'),
-				'link' 		    => $request->link,
-				'destaque'		=> $request->destaque,
-				'destaque_texto'=> $request->destaque_texto,
-				'encomenda'		=> $request->encomenda,
-				'encomenda_preco_venda'	=> $request->encomenda_preco_venda,
-				'encomenda_quantidade_minima'	=> $request->encomenda_quantidade_minima,
-				'encomenda_prazo_minimo'		=> $request->encomenda_prazo_minimo,
-				'prato_dia'						=> $request->prato_dia,
-				'visivel'		=> $request->visivel,
-				'visivel_cardapio_fisico'		=> $request->visivel_cardapio_fisico,
-			]);
-
-			if ($imagemOriginal <> env('IMAGEM_DEFAULT')) {
-				$delete = 'public/images/'.$imagemOriginal;
-				Storage::delete($delete);
+			if (strlen($request->preco_venda) == 0) {  // CAMPO OBRIGATÓRIO OU NÚMERO INVÁLIDO
+				return Redirect::back()->withErrors(['mensagem' => "Preço de venda do produto é obrigatório ou possui valor inválido."]);
 			}
-		}
-		else { // NÃO TEM IMAGEM - NÃO ATUALIZA A IMAGEM
-			$dataset = DB::table('produtos')
-			->where('id', $request->id)
-			->update([
-				'categoria_id'	=> $request->categoria_id,
-				'nome' 			=> $request->nome,
-				'descricao'		=> $request->descricao,
-				'marca'			=> $request->marca,
-				'volume'		=> $request->volume,
-				'tipo_volume'	=> $request->tipo_volume,
-				'ncm'			=> $request->ncm,
-				'preco'			=> $request->preco,
-				'preco_venda'	=> $request->preco_venda,
-				'quantidade'	=> $request->quantidade,
-				'fornecedor_id'	=> $request->fornecedor_id,
-				'link' 		    => $request->link,
-				'destaque'		=> $request->destaque,
-				'destaque_texto'=> $request->destaque_texto,
-				'encomenda'		=> $request->encomenda,
-				'encomenda_preco_venda'	=> $request->encomenda_preco_venda,
-				'encomenda_quantidade_minima'	=> $request->encomenda_quantidade_minima,
-				'encomenda_prazo_minimo'		=> $request->encomenda_prazo_minimo,
-				'prato_dia'						=> $request->prato_dia,
-				'visivel'		=> $request->visivel,
-				'visivel_cardapio_fisico'		=> $request->visivel_cardapio_fisico,
-			]);
-		}
-		$request->session()->flash("mensagem","Produto atualizado com sucesso: {$request->nome}.");
-		return redirect()->route('listar_produtos');
-    }
+			elseif (strlen($request->preco_venda) >= 3) {
+				if ((int)$request->preco_venda > 0)
+					$request->preco_venda = substr_replace($request->preco_venda, '.', -2, 0);
+				else
+					return Redirect::back()->withErrors(['mensagem' => "Preço de venda do produto é obrigatório ou possui valor inválido."]);
+			}
+			elseif (strlen($request->preco_venda) == 1) {
+				$request->preco_venda = "0.0" . $request->preco_venda;
+			}
+			elseif (strlen($request->preco_venda) == 2) {
+				$request->preco_venda = "0." . $request->preco_venda;
+			}  //dd($request->preco_venda);
 
+			$slug = Str::of($request->nome)->slug('-'); //dd($slug);
 
-    public function updatePreco(ProdutoFormRequest $request, Produto $produto)
-	{  //dd($request);
+			if ($request->visivel == 'on') $request->visivel = 1; else $request->visivel = 0;
+			if ($request->encomenda == 'on') $request->encomenda = 1; else $request->encomenda = 0;
+			if ($request->destaque == 'on') $request->destaque = 1; else $request->destaque = 0;
+			if ($request->prato_dia == 'on') $request->prato_dia = 1; else $request->prato_dia = 0;
+			if ($request->visivel_cardapio_fisico == 'on') $request->visivel_cardapio_fisico = 1; else $request->visivel_cardapio_fisico = 0;
 
-		if (!empty($request->preco_venda)) {
-			// verifica se o preço é um valor váliddo
-			/*$valor = $request->preco_venda;
-			$pattern= "/^\([0-9]$/";
-			if ( preg_match($pattern, $valor) == 1 ) {
-				dd("1 -" . preg_match($pattern, $valor) );
+			if (!empty($request->preco)) {
+				$request->preco = str_replace(".","",$request->preco);
+				$request->preco = str_replace(",",".",$request->preco);
 			}
 			else {
-				dd("0 -" . preg_match($pattern, $valor));
-			}*/
+				$request->preco = '0.00';
+			}
 
-			$request->preco_venda = str_replace(".","",$request->preco_venda);
-			$request->preco_venda = str_replace(",",".",$request->preco_venda);
+			if (!empty($request->encomenda_preco_venda)) {
+				$request->encomenda_preco_venda = str_replace(".","",$request->encomenda_preco_venda);
+				$request->encomenda_preco_venda = str_replace(",",".",$request->encomenda_preco_venda);
+			}
+			else {
+				$request->encomenda_preco_venda = '0.00';
+			}
+
+			if ($request->file('imagem')) {
+				$path = $request->file('imagem')->store('public/images');
+				$imagem = Str::of($path)->after('public/images/');   //dd($imagem);
+
+				$dataset = DB::table('produtos')
+				->where('id', $request->id)
+				->update([
+					'categoria_id'	=> $request->categoria_id,
+					'nome' 			=> $request->nome,
+					'slug'          => $slug,
+					'descricao'		=> $request->descricao,
+					'marca'			=> $request->marca,
+					'volume'		=> $request->volume,
+					'tipo_volume'	=> $request->tipo_volume,
+					'ncm'			=> $request->ncm,
+					'preco'			=> $request->preco,
+					'preco_venda'	=> $request->preco_venda,
+					'quantidade'	=> $request->quantidade,
+					'fornecedor_id'	=> $request->fornecedor_id,
+					'imagem'		=> $imagem,
+					'link' 		    => $request->link,
+					'destaque'		=> $request->destaque,
+					'destaque_texto'=> $request->destaque_texto,
+					'encomenda'		=> $request->encomenda,
+					'encomenda_preco_venda'	=> $request->encomenda_preco_venda,
+					'encomenda_quantidade_minima'	=> $request->encomenda_quantidade_minima,
+					'encomenda_prazo_minimo'		=> $request->encomenda_prazo_minimo,
+					'prato_dia'						=> $request->prato_dia,
+					'visivel'						=> $request->visivel,
+					'visivel_cardapio_fisico'		=> $request->visivel_cardapio_fisico,
+
+				]);
+			}
+			elseif ($request->remove_imagem) {
+
+				$imagem = Produto::select('imagem')->where('id',$request->id)->get(); //dd($imagem);
+				$imagemOriginal = $imagem[0]->getRawOriginal('imagem');
+				$dataset = DB::table('produtos')
+				->where('id', $request->id)
+				->update([
+					'categoria_id'	=> $request->categoria_id,
+					'nome' 			=> $request->nome,
+					'slug'          => $slug,
+					'descricao'		=> $request->descricao,
+					'marca'			=> $request->marca,
+					'volume'		=> $request->volume,
+					'tipo_volume'	=> $request->tipo_volume,
+					'ncm'			=> $request->ncm,
+					'preco'			=> $request->preco,
+					'preco_venda'	=> $request->preco_venda,
+					'quantidade'	=> $request->quantidade,
+					'fornecedor_id'	=> $request->fornecedor_id,
+					'imagem'		=> env('IMAGEM_DEFAULT'),
+					'link' 		    => $request->link,
+					'destaque'		=> $request->destaque,
+					'destaque_texto'=> $request->destaque_texto,
+					'encomenda'		=> $request->encomenda,
+					'encomenda_preco_venda'	=> $request->encomenda_preco_venda,
+					'encomenda_quantidade_minima'	=> $request->encomenda_quantidade_minima,
+					'encomenda_prazo_minimo'		=> $request->encomenda_prazo_minimo,
+					'prato_dia'						=> $request->prato_dia,
+					'visivel'		=> $request->visivel,
+					'visivel_cardapio_fisico'		=> $request->visivel_cardapio_fisico,
+				]);
+
+				if ($imagemOriginal <> env('IMAGEM_DEFAULT')) {
+					$delete = 'public/images/'.$imagemOriginal;
+					Storage::delete($delete);
+				}
+			}
+			else { // NÃO TEM IMAGEM - NÃO ATUALIZA A IMAGEM
+				$dataset = DB::table('produtos')
+				->where('id', $request->id)
+				->update([
+					'categoria_id'	=> $request->categoria_id,
+					'nome' 			=> $request->nome,
+					'slug'          => $slug,
+					'descricao'		=> $request->descricao,
+					'marca'			=> $request->marca,
+					'volume'		=> $request->volume,
+					'tipo_volume'	=> $request->tipo_volume,
+					'ncm'			=> $request->ncm,
+					'preco'			=> $request->preco,
+					'preco_venda'	=> $request->preco_venda,
+					'quantidade'	=> $request->quantidade,
+					'fornecedor_id'	=> $request->fornecedor_id,
+					'link' 		    => $request->link,
+					'destaque'		=> $request->destaque,
+					'destaque_texto'=> $request->destaque_texto,
+					'encomenda'		=> $request->encomenda,
+					'encomenda_preco_venda'	=> $request->encomenda_preco_venda,
+					'encomenda_quantidade_minima'	=> $request->encomenda_quantidade_minima,
+					'encomenda_prazo_minimo'		=> $request->encomenda_prazo_minimo,
+					'prato_dia'						=> $request->prato_dia,
+					'visivel'		=> $request->visivel,
+					'visivel_cardapio_fisico'		=> $request->visivel_cardapio_fisico,
+				]);
+			}
+			$request->session()->flash("mensagem","Produto atualizado com sucesso: {$request->nome}.");
+			return redirect()->route('listar_produtos');
+
+    }
+
+    public function updatePreco(Request $request)
+	{  //dd($request);
+
+        $request->preco_venda = preg_replace('/[^0-9]/', '', $request->preco_venda);   //dd($request->preco_venda);
+
+        if (strlen($request->preco_venda) == 0) {
+            // CAMPO OBRIGATÓRIO OU NÚMERO INVÁLIDO
+            $request->preco_venda = 0;  //dd($request->preco_venda);
+        }
+        elseif (strlen($request->preco_venda) >= 3) {
+            $request->preco_venda = substr_replace($request->preco_venda, '.', -2, 0);
+        }
+        elseif (strlen($request->preco_venda) == 1) {
+            $request->preco_venda = "0.0" . $request->preco_venda;
+        }
+        elseif (strlen($request->preco_venda) == 2) {
+            $request->preco_venda = "0." . $request->preco_venda;
+        }  //dd($request->preco_venda);
+
+		if ($request->preco_venda == 0) {
+			$request->session()->flash("mensagem","Preço de venda do produto {$request->nome} é obrigatório ou possui valor inválido.");
+			return redirect()->route('listar_produtos');
 		}
 		else {
-			$request->preco_venda = '0.00';
+			$dataset = DB::table('produtos')
+			->where('id', $request->id)
+			->update([
+				'preco_venda' => $request->preco_venda,
+			]);
+			$request->preco_venda = number_format($request->preco_venda,2,",",".");
+			$request->session()->flash("mensagem","Preço de venda do produto <strong>{$request->nome}</strong> atualizado com sucesso. Novo preço: <strong>R$ " . $request->preco_venda . "</strong>.");
+			return redirect()->route('listar_produtos');
 		}
-
-		$dataset = DB::table('produtos')
-		->where('id', $request->id)
-		->update([
-			'preco_venda' => $request->preco_venda,
-		]);
-		$request->session()->flash("mensagem","Preço de venda do produto {$request->nome} atualizado com sucesso.");
-		return redirect()->route('listar_produtos');
 	}
 
 	public function destroy(Request $request) {
@@ -312,35 +415,63 @@ class ProdutoController extends Controller {
 
 
 		if (is_null($request->produtos)) { // usuário não escolheu nenhum produto
-			$request->session()->flash('mensagem',"Ao menos um produto deve estar assinalado para gerar-se cardápio físico.");
-			return redirect()->route('listar_produtos');
+			if ($request->tipo_pdf == "gerar_cardapio") {
+				$request->session()->flash('mensagem',"Ao menos um produto deve estar assinalado para gerar-se cardápio físico.");
+				return redirect()->route('listar_produtos');
+			}
 		}
 
-        $dataset = DB::table('categorias')
-        ->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
-        ->select(  'categorias.nome AS CatNome',
-                   'produtos.nome AS ProdNome',
-                   'produtos.preco_venda AS ProdPrecoVenda',
-				   /*'produtos.visivel_cardapio_fisico AS ProdVisivelCardapioFisico',*/)
-		->whereIn('produtos.id', $request->produtos)
-		->orderBy('categorias.nome', 'asc')
-        ->orderBy('produtos.nome', 'asc')
-        ->get();  //ddd($dataset);
+		if ($request->tipo_pdf == "gerar_cardapio") {
 
-		$dataset = $dataset->chunk($configuracao[0]->cardapio_fisico_qtd);  //dd($dataset);  dd(count($dataset));
+			$dataset = DB::table('categorias')
+			->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+			->select(  'categorias.nome AS CatNome',
+					   'produtos.nome AS ProdNome',
+					   'produtos.preco_venda AS ProdPrecoVenda')
+			->whereIn('produtos.id', $request->produtos)
+			->orderBy('categorias.nome', 'asc')
+			->orderBy('produtos.nome', 'asc')
+			->get();  //ddd($dataset);
 
-		$pdf = PDF::loadView('admin.produto.pdf_view',
-			['dataset' => $dataset,
-			'qtdArrays' => count($dataset),
-			'chunk' => 40,
-        	]
-		);
+			$dataset = $dataset->chunk($configuracao[0]->cardapio_fisico_qtd);  //dd($dataset);  dd(count($dataset));
+			$pdf = PDF::loadView('admin.produto.pdf_view',
+				['dataset' => $dataset,
+				'qtdArrays' => count($dataset),
+				'chunk' => 40,
+				]
+			);
+		}
+		else {
+			// LISTAGEM DE PRODUTOS
+			$dataset = DB::table('categorias')
+			->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+			->select(  'categorias.nome AS CatNome',
+					   'produtos.nome AS ProdNome',
+					   'produtos.descricao AS ProdDesc',
+					   'produtos.preco_venda AS ProdPrecoVenda',
+					   'produtos.preco AS ProdPrecoCompra',
+					   'produtos.imagem AS ProdImagem',
+					   'produtos.visivel AS ProdVisivel',
+					   'produtos.visivel_cardapio_fisico AS ProdVisivelCardFisico',
+					   'produtos.encomenda AS ProdEncomenda',
+					   'produtos.encomenda_preco_venda AS ProdEncomendaPrecVenda',
+					   'produtos.prato_dia AS ProdPratoDia')
+			->orderBy('categorias.nome', 'asc')
+			->orderBy('produtos.nome', 'asc')
+			->get();  //ddd($dataset);
+
+			$pdf = PDF::loadView('admin.produto.pdf_produtos',
+				['dataset' => $dataset,
+				 'qtdArrays' => count($dataset),
+				]
+			);
+		}
 
 		//$pdf->set_paper('a4', 'portrait');
 
 		$pdf->render();
 		return $pdf->stream('cardapio.pdf');
-		/*return view('admin.produto.pdf_view',
+		/*return view('admin.produto.pdf_produtos',
 			[	'dataset' => $dataset,
 				'qtdArrays' => count($dataset),
 			]

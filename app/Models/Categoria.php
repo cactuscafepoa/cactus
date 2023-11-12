@@ -26,11 +26,13 @@ class Categoria extends Model
     protected static function booted()
     {
         static::creating(function($dataset) {
+            //dd($dataset);
             $dataset->slug = Str::slug($dataset->nome);
         });
 
         // SE ALTERAR O NOME DO PRODUTO
         static::updating(function($dataset) {
+            dd($dataset);
             $dataset->slug = Str::slug($dataset->nome);
         });
 
@@ -43,5 +45,5 @@ class Categoria extends Model
     public function getImagemAttribute($value)
     {
         return Storage::url($value);
-    }    
+    }
 }

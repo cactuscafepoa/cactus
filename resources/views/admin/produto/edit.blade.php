@@ -5,6 +5,12 @@ Editar Produto
 @endsection
 
 @section('conteudo')
+@php
+	if(!empty($mensagem)) {
+        echo "<div class='alert alert-danger mt-3'>".$mensagem."</div>";
+ 	}
+@endphp
+
 @if ($errors->any())
     <div class="alert alert-danger mt-3">
         <ul class="mb-0">

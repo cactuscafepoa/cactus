@@ -1805,9 +1805,9 @@ nav .navigation__itens__cms a:hover img {
 }
 @media only screen and (max-width: 768px) {
     .novidade__label {
-        width:12%;
+        width:10%;
         position:absolute;
-        top:8px;
+        top:10px;
         left:54px;
     }
 }

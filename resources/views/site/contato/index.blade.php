@@ -46,7 +46,7 @@
 
                     <div>
                         <div class="contact__infos__header" style="display: initial;">
-                            <img src="{{asset('images/instagram.gif')}}" alt="">
+                            <img src="{{asset('images/instagram.png')}}" alt="">
                             <h3 class="title-small" style="display:initial;margin-bottom:10px;">Instagram</h3>
                         </div>
                         <section class="contact__infos__social-media">

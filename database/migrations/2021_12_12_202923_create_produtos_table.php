@@ -13,7 +13,7 @@ class CreateProdutosTable extends Migration
 			$table->integer('categoria_id')->unsigned();
 			$table->foreign('categoria_id')->references('id')->on('categorias')->restrictOnDelete();
 			$table->string('nome');
-			$table->string('slug')->nullable();
+			$table->string('slug')->nullable()->unique();
 			$table->text('descricao')->nullable();
 			$table->string('marca')->nullable();
 			$table->string('volume')->nullable();

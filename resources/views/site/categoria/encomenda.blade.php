@@ -75,11 +75,11 @@
 
                     if ($product->ProdLink != "") {
                         if (strpos($product->ProdLink, "instagram") > 0)
-                            $linkImag = "<img class='midia_social' src='/images/instagram.gif' alt='Instagram'>";
+                            $linkImag = "<img class='midia_social' src='/images/instagram.png' alt='Instagram'>";
                         elseif (strpos($product->ProdLink, "youtube") > 0)
-                            $linkImag = "<img class='midia_social' src='/images/youtube.gif'   alt='YouTube'>";
+                            $linkImag = "<img class='midia_social' src='/images/youtube.png'   alt='YouTube'>";
                         else
-                            $linkImag = "<img class='midia_social' src='/images/midia_social_vazia.gif'>";
+                            $linkImag = "<img class='midia_social' src='/images/midia_social_vazia.png'>";
 
                         $link = $product->ProdLink;
                         $alvo = "target='_blank'";
@@ -103,7 +103,7 @@
                             </div>
                             <section class="product__content" style="padding:0px 15px 0px 15px;">
                                 @if ($product->ProdDestaque == 1)
-                                    <img class="novidade__label" src="{{asset('images/label_novidade.gif')}}" alt="Novidade">
+                                    <img class="novidade__label" src="{{asset('images/label_novidade.png')}}" alt="Novidade">
                                 @endif
                                 @php
                                     echo $linkImag;
