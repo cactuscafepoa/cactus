@@ -470,7 +470,7 @@ class ProdutoController extends Controller {
 		//$pdf->set_paper('a4', 'portrait');
 
 		$pdf->render();
-		return $pdf->stream('cardapio.pdf');
+		return $pdf->stream('listagem.pdf');
 		/*return view('admin.produto.pdf_produtos',
 			[	'dataset' => $dataset,
 				'qtdArrays' => count($dataset),
