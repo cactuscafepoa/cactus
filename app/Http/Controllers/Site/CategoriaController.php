@@ -19,6 +19,12 @@ class CategoriaController extends Controller
      */
     public function index()
     {
+        // VERIFICA QUAL A CATEGORIA ENVOLVE TODOS OS PRODUTOS
+        $categoriaUnica = DB::table('categorias')
+        ->select('id', 'nome', 'slug', 'descricao','visivel', DB::raw('CONCAT("storage/images/", imagem) AS imagem'))
+        ->where('nome', 'like','%Aqui%')
+        ->get();    //VOU INSERIR ESSE REGISTRO NO PRIMEIRO REGISTRO DO DATASET
+
         $dataset = DB::table('categorias')
         ->distinct()
         ->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
@@ -26,7 +32,12 @@ class CategoriaController extends Controller
         ->where('categorias.visivel', '=',  '1')
         ->where('produtos.visivel', '=',  '1')
         ->orderBy('categorias.nome', 'asc')
-        ->get();   // echo $dataset; exit;  //dd($categorias);
+        ->get();   //dd($dataset);
+
+        // INSERIR O REGISTRO DA CATEGORIA QUE TRAZ TODOS OS PRODUTOS NA PRIMEIRA POSIÇÃO DO DATASET DAS DEMAIS CATEGORAIS
+        if (!is_null($categoriaUnica) && $categoriaUnica[0]->visivel == 1)
+            $dataset = $categoriaUnica->merge($dataset);  //dd($dataset);
+
         return view('site.categoria.index', [
             'categorias' => $dataset,
             'configuracao' => Configuracao::all('cardapio'),
@@ -61,33 +72,54 @@ class CategoriaController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Categoria $categoria)
-    {        //dd($categoria->id); exit;
-        //$imagemOriginal = $categoria->getRawOriginal('imagem');
-        //$categoria->imagem = 'images/'.$imagemOriginal;
+    {   //dd($categoria->id);
 
-        //return view('site.categoria.show', ['categoria' => $categoria->load('produtos')]);
-        // até está certo.
+        // VERIFICA SE A CATEGORIA É DE TODOS OS PRODUTOS
+        $categoriaUnica = DB::table('categorias')
+        ->select('nome')
+        ->where('id',$categoria->id)
+        ->get(); //VOU INSERIR ESSE REGISTRO NO PRIMEIRO REGISTRO DO DATASET
 
-        $dataset = DB::table('categorias')
-        ->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
-        ->select('categorias.nome AS CatNome', 'categorias.descricao AS CatDescricao', DB::raw('CONCAT("storage/images/", categorias.imagem) AS CatImagem'),
-                   'produtos.nome AS ProdNome',
-                   'produtos.descricao AS ProdDescricao',
-                   'produtos.preco_venda AS ProdPrecoVenda',
-                   'produtos.encomenda AS ProdEncomenda',
-                   DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
-                   'produtos.link AS ProdLink',
-                   'produtos.destaque AS ProdDestaque', )
-        ->where('categorias.id', '=', $categoria->id)
-        ->where('categorias.visivel', '=', '1')
-        ->where('produtos.visivel', '=',  '1')
-        ->orderBy('produtos.nome', 'asc')
-        ->get();  //dd($dataset);  exit;
-        //var_dump($dataset); exit;
+        if (!is_null($categoriaUnica) && str_contains($categoriaUnica[0]->nome, 'Aqui') ) {  // TODOS OS PRODUTOS
+            $categoriaTodos = "sim";
+            $dataset = DB::table('categorias')
+            ->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+            ->select('categorias.nome AS CatNome', 'categorias.descricao AS CatDescricao', DB::raw('CONCAT("storage/images/", categorias.imagem) AS CatImagem'),
+                       'produtos.nome AS ProdNome',
+                       'produtos.descricao AS ProdDescricao',
+                       'produtos.preco_venda AS ProdPrecoVenda',
+                       'produtos.encomenda AS ProdEncomenda',
+                       DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
+                       'produtos.link AS ProdLink',
+                       'produtos.destaque AS ProdDestaque', )
+            ->where('categorias.visivel', '=', '1')
+            ->where('produtos.visivel', '=',  '1')
+            ->orderBy('produtos.nome', 'asc')
+            ->get();  //dd($dataset);
+        }
+        else {
+            $categoriaTodos = "nao";
+            $dataset = DB::table('categorias')
+            ->join('produtos', 'categorias.id', '=', 'produtos.categoria_id')
+            ->select('categorias.nome AS CatNome', 'categorias.descricao AS CatDescricao', DB::raw('CONCAT("storage/images/", categorias.imagem) AS CatImagem'),
+                    'produtos.nome AS ProdNome',
+                    'produtos.descricao AS ProdDescricao',
+                    'produtos.preco_venda AS ProdPrecoVenda',
+                    'produtos.encomenda AS ProdEncomenda',
+                    DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
+                    'produtos.link AS ProdLink',
+                    'produtos.destaque AS ProdDestaque', )
+            ->where('categorias.id', '=', $categoria->id)
+            ->where('categorias.visivel', '=', '1')
+            ->where('produtos.visivel', '=',  '1')
+            ->orderBy('produtos.nome', 'asc')
+            ->get();  //dd($dataset);
+        }
 
         return view('site.categoria.cardapio', [
-            'categoria' => $dataset,
-            'configuracao' => Configuracao::all('cardapio'),
+            'categoria'      => $dataset,
+            'configuracao'   => Configuracao::all('cardapio'),
+            'categoriaTodos' => $categoriaTodos,
         ]);
     }
 

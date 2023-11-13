@@ -16,7 +16,7 @@
             <h2 style="font-size: 1.4rem;color: #8a99a8;">Nosso cardápio está em manutenção.</h2>
             <p style="max-width:initial;font-weight: initial;">Em breve estará disponível novamente.</p>
         </section>
-        <section class="products__cultivation__category main-wrapper" style="padding:0px 0px 10px 0px;display: flex;">
+        <section class="products__cultivation__category main-wrapper" style="padding:0px 0px 10px 0px;display:flex;">
             <a href="{{route('site.home')}}" role="button" class="button button_accent button_large">Voltar</a>
         </section>
     </div>
@@ -30,7 +30,12 @@
 </style>
     <header class="common-header">
         <div class="header-wrapper">
-            <h1 class="title-large">Cardápio: {{$categoria[0]->CatNome}}</h1>
+            @php
+                if ($categoriaTodos == "sim")
+                    echo "<h1 class='title-large'>Cardápio Geral</h1>";
+                else
+                    echo "<h1 class='title-large'>Cardápio:" . $categoria[0]->CatNome . "</h1>";
+            @endphp
         </div>
         <div class="pattern__header"></div>
     </header>
@@ -38,9 +43,6 @@
     <div class="products__general main-wrapper" style="margin-top:-20px;margin-bottom: -30px;display:block;">
 
         <section class="products__list" style="margin-bottom:30px;margin-top: 50px;">
-            <!--<header>-->
-                <!--<h2 class="title-large">{{ $categoria[0]->CatNome }}</h2>-->
-            <!--</header>-->
 
             @foreach($categoria as $product)
                 @php

@@ -15,7 +15,7 @@
             <h2 style="font-size: 1.4rem;color: #8a99a8;">Nosso cardápio está em manutenção.</h2>
             <p style="max-width:initial;font-weight: initial;">Em breve estará disponível novamente.</p>
         </section>
-        <section class="products__cultivation__category main-wrapper" style="padding:0px 0px 10px 0px;display: flex;">
+        <section class="products__cultivation__category main-wrapper" style="padding:30px 0px 10px 0px;display: flex;">
             <a href="{{route('site.home')}}" role="button" class="button button_accent button_large">Voltar</a>
         </section>
     </div>
@@ -49,7 +49,7 @@
             </div>
         @endif
 
-        <section class="products__cultivation__category main-wrapper" style="padding:0px 0px 10px 0px;display: flex;">
+        <section class="products__cultivation__category main-wrapper" style="padding:30px 0px 10px 0px;display: flex;">
             <a href="{{route('site.home')}}" role="button" class="button button_accent button_large">Voltar</a>
         </section>
     </div>

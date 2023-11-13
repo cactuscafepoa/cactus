@@ -24,11 +24,11 @@ class CategoriaFormRequest extends FormRequest
      * @return array
      */
     public function rules(Request $request)
-    {
+    {   //dd($request->id);
         if ($request->id) /* edição */
         {
             return [
-                'nome'         => 'bail|required|min:3|max:190|unique:categorias',
+                'nome'         => 'bail|required|min:3|max:190|unique:categorias,nome,'.$request->id,
                 'descricao'    => 'bail|max:500',         /*'bail|min:6|max:500',*/
                 'imagem'       => 'bail|image|mimes:jpg,jpeg,png,bmp,gif,svg,webp|max:2048',
             ];
