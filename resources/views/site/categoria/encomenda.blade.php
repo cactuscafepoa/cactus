@@ -118,7 +118,7 @@
                                     <img src="{{ asset($product->ProdImagem) }}" style="width: 160px;">
                                 </div>
                             </a>
-                            <section class="product__content" style="text-align:initial;">
+                            <section class="product__content" style="text-align:initial;padding: 0px 15px 0px 15px;">
                                 <div class="product__desciption" style="margin-top:10px;">
                                     {{$product->ProdDescricao}}
                                     @php
@@ -132,7 +132,12 @@
                                     @endphp
                                 </div>
                             </section>
-
+                            @php
+                                if (!is_null($product->ProdDestTexto) && $product->ProdDestTexto != "") {
+                                    echo "<section class='product__content' style='padding:0px 15px 0px 15px;margin-top:10px;'><div class='product__desciption' style='text-align:initial;'>" .
+                                        $product->ProdDestTexto ."</div></section>";
+                                }
+                            @endphp
                         </article>
                     @endif
                 @endforeach

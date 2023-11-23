@@ -95,6 +95,12 @@
                             {{$product->ProdDescricao}}
                         </div>
                     </section>
+                    @php
+                        if (!is_null($product->ProdDestTexto) && $product->ProdDestTexto != "") {
+                            echo "<section class='product__content' style='padding:0px 15px 0px 15px;margin-top:10px;'><div class='product__desciption'>" .
+                                $product->ProdDestTexto ."</div></section>";
+                        }
+                    @endphp
                 </article>
 
             @endforeach

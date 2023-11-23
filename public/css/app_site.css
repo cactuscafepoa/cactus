@@ -2954,3 +2954,33 @@ nav .navigation__itens__cms a:hover img {
 .decor_text_menu {
     text-decoration: none;
 }
+
+.blog__container_lisiane {
+    display: grid;
+    grid-column-gap: 20px;
+    grid-template-columns: repeat(2,1fr);
+}
+@media only screen and (max-width: 992px) {
+    .blog__container_lisiane {
+        grid-template-columns: repeat(2,1fr);
+    }
+    .blog__introduction_image {
+        text-align:center;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .blog__container_lisiane {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .blog__introduction_image {
+        text-align:center;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .blog__container_lisiane {
+        grid-template-columns: repeat(1,1fr);
+    }
+    .blog__introduction_image {
+        text-align:center;
+    }
+}

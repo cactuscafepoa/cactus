@@ -148,7 +148,7 @@ Editar Produto
                     </label>
                 </span>
                 <span style="width:80%;">
-                <label for="destaque_texto">Descrição para destaque/novidade (acrescenta este texto na descrição do produto)</label>
+                <label for="destaque_texto">Descrição para destaque/novidade (acrescenta: ícone <strong>Novi</strong> e o texto na descrição do produto)</label>
                 <input type="text" class="form-control" name="destaque_texto" id="destaque_texto" value="{{$produto[0]->destaque_texto}}">
             </span>
         </div>
@@ -185,7 +185,7 @@ Editar Produto
 
         <hr>
 
-        <label for="link">Link (Instagram ou YouTube)</label>
+        <label for="link">Link (se Instagram ou YouTube - acrescenta o ícone do <strong>Instagram ou YouTube</strong> no produto)</label>
         <input type="text" class="form-control" name="link" id="link" value="{{$produto[0]->link}}">
 
         <label for="imagem">Imagem (jpg, jpeg, png, bmp, gif, svg ou webp)</label>

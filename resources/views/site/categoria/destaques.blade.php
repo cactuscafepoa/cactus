@@ -81,12 +81,14 @@
                         <div class="product__desciption">
                             {{$product->ProdDescricao}}
                         </div>
-                        <div class="product__desciption" style="margin-top:10px;">
-                            {{$product->ProdDestTexto}}
-                        </div>
                     </section>
+                    @php
+                        if (!is_null($product->ProdDestTexto) && $product->ProdDestTexto != "") {
+                            echo "<section class='product__content' style='padding:0px 15px 0px 15px;margin-top:10px;'><div class='product__desciption'>" .
+                                $product->ProdDestTexto ."</div></section>";
+                        }
+                    @endphp
                 </article>
-
             @endforeach
         </section>
         <a href="{{route('site.cardapio')}}" role="button" class="button button_accent button_large" style="margin-left:20px;margin-bottom:48px;">Voltar</a>

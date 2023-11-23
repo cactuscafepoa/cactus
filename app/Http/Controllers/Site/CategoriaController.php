@@ -91,7 +91,8 @@ class CategoriaController extends Controller
                        'produtos.encomenda AS ProdEncomenda',
                        DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
                        'produtos.link AS ProdLink',
-                       'produtos.destaque AS ProdDestaque', )
+                       'produtos.destaque AS ProdDestaque',
+                       'produtos.destaque_texto AS ProdDestTexto',)
             ->where('categorias.visivel', '=', '1')
             ->where('produtos.visivel', '=',  '1')
             ->orderBy('produtos.nome', 'asc')
@@ -108,7 +109,8 @@ class CategoriaController extends Controller
                     'produtos.encomenda AS ProdEncomenda',
                     DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
                     'produtos.link AS ProdLink',
-                    'produtos.destaque AS ProdDestaque', )
+                    'produtos.destaque AS ProdDestaque',
+                    'produtos.destaque_texto AS ProdDestTexto',)
             ->where('categorias.id', '=', $categoria->id)
             ->where('categorias.visivel', '=', '1')
             ->where('produtos.visivel', '=',  '1')
@@ -138,7 +140,8 @@ class CategoriaController extends Controller
                    'produtos.encomenda_prazo_minimo AS ProdEncPrazoMin',
                    'produtos.encomenda AS ProdEncomenda', DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
                    'produtos.link AS ProdLink',
-                   'produtos.destaque AS ProdDestaque',)
+                   'produtos.destaque AS ProdDestaque',
+                   'produtos.destaque_texto AS ProdDestTexto',)
         /*->where('categorias.visivel', '=', '1')*/
         /*->where('produtos.visivel', '=',  '1')*/
         ->where('produtos.encomenda', '=',  '1')
@@ -165,7 +168,8 @@ class CategoriaController extends Controller
                    'produtos.encomenda AS ProdEncomenda',
                    'produtos.link AS ProdLink',
                    DB::raw('CONCAT("storage/images/", produtos.imagem) AS ProdImagem'),
-                   'produtos.destaque AS ProdDestaque', )
+                   'produtos.destaque AS ProdDestaque',
+                   'produtos.destaque_texto AS ProdDestTexto', )
         ->where('produtos.visivel', '=',  '1')
         ->where('produtos.prato_dia', '=',  '1')
         ->orderBy('produtos.nome', 'asc')

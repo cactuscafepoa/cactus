@@ -240,9 +240,9 @@
 
 <section class="blog" style="padding:0px;background-color: #B1D8B7;">
     <div class="main-wrapper" style="padding: 10px;">
-        <div class="blog__container">
-            <div class="blog__introduction" style="height: initial;text-align: center;">
-                <img src="{{asset('images/lisiane.png')}}" style="border-radius: 4px 4px 0 0;width: 60%;">
+        <div class="blog__container_lisiane">
+            <div class="blog__introduction_image" style="height: initial;">
+                <img src="{{asset('images/lisiane.png')}}" style="border-radius: 4px 4px 0 0;max-width:60%;">
             </div>
 				<div class="post__cover" style="max-height: initial;overflow: initial;">
 					<h2 class="title-large" style="color:#4c5967;">Olá!</h2>
@@ -250,7 +250,7 @@
 					<p style="padding: 0px;color:#4c5967;">Praticamente 80% do que servimos são produzidos por mim. Produtos feitos com amor e dedicação.</p>
 					<p style="padding: 0px;color:#4c5967;">Aguardo vocês para uma visita!</p>
 				</div>
+            </div>
         </div>
-    </div>
 </section>
 @endsection
